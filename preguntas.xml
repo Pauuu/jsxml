@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE questions>
+
+<questions>
+    <question id="profe_001">
+		<type>text</type>
+		<title>Adivina el número secreto... </title>
+		<answer>1</answer>
+	</question>
+
+</questions>
