@@ -3,7 +3,25 @@
 <script>
 var formElement=null;
 var secret=50;
+ 
+function gestionarXml(dadesXml){
+var xmlDoc = dadesXml.responseXML;
+document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+}
+ 
 window.onload = function(){
+ 
+ var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+ if (this.readyState == 4 && this.status == 200) {
+  gestionarXml(this);
+ }
+};
+xhttp.open("GET", "preguntas.xml", true);
+xhttp.send();
+ 
+ 
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
   var s=formElement.elements[0].value; 
