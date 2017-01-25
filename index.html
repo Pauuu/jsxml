@@ -1,0 +1,27 @@
+<html>
+<head>
+<script>
+var formElement=null;
+var secret=50;
+window.onload = function(){
+ formElement=document.getElementById('myform');
+ formElement.onsubmit=function(){
+  var s=formElement.elements[0].value; 
+  if (s==secret) alert('Número correcto');
+  else {
+    if (s>secret> alert('te has pasado');
+    else alert('te has quedado corto');
+  }
+  return false;
+ }
+}
+</script>
+</head>
+<body>
+<p id='title'></p>
+<form id='myform'>
+ <input type='number'>
+ <input type='submit'>
+</form>
+</body>
+</html>
