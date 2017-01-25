@@ -30,14 +30,14 @@ xhttp.send();
     if (s>secret) alert('te has pasado');
     else alert('te has quedado corto');
   }
-  return false;
+  submit();
  }
 }
 </script>
 </head>
 <body>
 <p id='title'></p>
-<form id='myform'>
+<form id='myform' action='respuestas.xql' method='post'>
  <input type='number'>
  <input type='submit'>
 </form>
