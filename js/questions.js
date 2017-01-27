@@ -1,5 +1,5 @@
 var formElement=null;
-var secret=50;
+var secret=50; //ahora se lee 23 de <answer>23</answer> suministrado en preguntas.xml
  
 //al cargar la página... 
 window.onload = function(){ 
@@ -31,5 +31,6 @@ window.onload = function(){
 function gestionarXml(dadesXml){
  var xmlDoc = dadesXml.responseXML;
  document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+ secret=xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue;
 }
 
