@@ -45,7 +45,10 @@ function gestionarXml(dadesXml){
  var nopciones = xmlDoc.getElementsByTagName("option").length; //cuantas opciones hay
  
  for (i = 0; i < nopciones; i++) { 
-    select.options.add(new Option(xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue));
+    var option = document.createElement("option");
+	   option.text = xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue;
+	   option.value=i+1;
+    select.options.add(option);
  } 
  
  respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
