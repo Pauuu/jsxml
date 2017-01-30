@@ -1,5 +1,6 @@
 var formElement=null;
 var secret=50; //ahora se lee 23 de <answer>23</answer> suministrado en preguntas.xml
+var respuesta=null;
  
 //al cargar la página... 
 window.onload = function(){ 
@@ -23,11 +24,11 @@ window.onload = function(){
     if (s>secret) alert('te has pasado');
     else alert('te has quedado corto');
   }
+  //corrección select
+  var sel = formElement.elements[1];  
+  if (sel.selectedIndex==respuesta) alert('Select correcto'); else alert('Select incorrecto');
   return false;
  }
- //corrección select
- var sel = formElement.elements[1];
- if (e.selectedIndex==respuesta) alert('Selección correcta'); else alert('Selección incorrecta');
 }
 
 //funcion donde cogemos los datos del xml y los ponemos en el html 
@@ -47,6 +48,6 @@ function gestionarXml(dadesXml){
     select.options.add(new Option(xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue));
  } 
  
- respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue)-1;
+ respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
 }
