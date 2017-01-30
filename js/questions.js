@@ -34,10 +34,13 @@ function gestionarXml(dadesXml){
  secret=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
- /*var option = document.createElement("option");
- option.text = "Text";
- option.value = "myvalue";
- var select = document.getElementById("id-to-my-select-box");
- select.appendChild(option);*/
+ 
+ var select = xmlDoc.getElementsByTagName("select")[0];
+ 
+ var option =  xmlDoc.getElementsByTagName("option")[0];
+ option.text = xmlDoc.getElementsByTagName("option")[0].childNodes[0].nodeValue;
+ option.value = "1";
+ select.appendChild(option);
+ 
 }
 
