@@ -26,8 +26,8 @@ window.onload = function(){
   return false;
  }
  //corrección select
- var sel = formElelemnt.elements[1];
- if (e.selectedIndex-1==respuesta) alert('Selección correcta'); else alert('Selección incorrecta');
+ var sel = formElement.elements[1];
+ if (e.selectedIndex==respuesta) alert('Selección correcta'); else alert('Selección incorrecta');
 }
 
 //funcion donde cogemos los datos del xml y los ponemos en el html 
@@ -47,6 +47,6 @@ function gestionarXml(dadesXml){
     select.options.add(new Option(xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue));
  } 
  
- respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
+ respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue)-1;
 
 }
