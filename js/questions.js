@@ -37,7 +37,7 @@ function gestionarXml(dadesXml){
  
  var select = xmlDoc.getElementsByTagName("select")[0];
  
- var option =  xmlDoc.getElementsByTagName("option")[0];
+ var option =  xmlDoc.getElementsByTagName("option")[0].childNodes[0];
  option.text = xmlDoc.getElementsByTagName("option")[0].childNodes[0].nodeValue;
  option.value = "1";
  select.appendChild(option);
