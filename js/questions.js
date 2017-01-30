@@ -41,16 +41,19 @@ function gestionarXml(dadesXml){
  //Rellenamos p selecttitle y guardamos la respuesta para corregir
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  
+ //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML.
  var select = document.getElementsByTagName("select")[0];
- var nopciones = xmlDoc.getElementsByTagName("option").length; //cuantas opciones hay
+ var nopciones = xmlDoc.getElementsByTagName("option").length; //cuantas opciones hay en el XML
  
+ //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
-	   option.text = xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue;
-	   option.value=i+1;
+    option.text = xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue;
+    option.value=i+1;
     select.options.add(option);
  } 
  
+ //nos quedamos la respuesta para la corrección.
  respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
 }
