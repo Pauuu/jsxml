@@ -25,6 +25,9 @@ window.onload = function(){
   }
   return false;
  }
+ //corrección select
+ var sel = formElelemnt.elements[1];
+ if (e.selectedIndex-1==respuesta) alert('Selección correcta'); else alert('Selección incorrecta');
 }
 
 //funcion donde cogemos los datos del xml y los ponemos en el html 
