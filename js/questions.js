@@ -35,11 +35,11 @@ function gestionarXml(dadesXml){
  
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  
- var select = xmlDoc.getElementsByTagName("select")[0].childNodes[0];
- 
  var option =  xmlDoc.getElementsByTagName("option")[0].childNodes[0];
  option.text = xmlDoc.getElementsByTagName("option")[0].childNodes[0].nodeValue;
  option.value = "1";
+ 
+ var select = xmlDoc.getElementsByTagName("select")[0].childNodes[0];
  select.appendChild(option);
  
 }
