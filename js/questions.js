@@ -29,14 +29,21 @@ window.onload = function(){
 
 //funcion donde cogemos los datos del xml y los ponemos en el html 
 function gestionarXml(dadesXml){
+ //Rellenamos p title y guardamos el número secreto
  var xmlDoc = dadesXml.responseXML;
  document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
  secret=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
+ //Rellenamos p selecttitle y guardamos la respuesta para corregir
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  
  var select = document.getElementsByTagName("select")[0];
- select.options.add(new Option(xmlDoc.getElementsByTagName("option")[0].childNodes[0].nodeValue));
+ var nopciones = xmlDoc.getElementsByTagName("option").length; //cuantas opciones hay
  
-}
+ for (i = 0; i < nopciones; i++) { 
+    select.options.add(new Option(xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue));
+ } 
+ 
+ respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
+}
