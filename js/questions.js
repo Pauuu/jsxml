@@ -44,6 +44,12 @@ window.onload = function(){
   else node = document.createTextNode("P2: Select incorrecto");
   para.appendChild(node);
   resultContainer.appendChild(para);
+  
+  //Corregir input type checkbox
+  for (i = 0; i < respuestasCheckbox.lenght; i++) {
+   alert(respuestasCheckbox[i]);
+  }
+  
   return false;
  }
 }
@@ -87,12 +93,17 @@ function gestionarXml(dadesXml){
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
-    label..setAttribute("for", "color_"+i);
+    label.setAttribute("for", "color_"+i);
     input.type="checkbox";
     input.id="color_"+i;;
-    checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
+    checkboxContainer.appendChild(input);    
  }  
- 
+ //guardamos todas las respuestas correctas
+ var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
+ //Bucle para guardar las respuestas
+ for (i = 0; i < nrespuestas; i++) { 
+  respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue
+ }
  
 }
