@@ -3,10 +3,10 @@ var secret=50; //ahora se lee 23 de <answer>23</answer> suministrado en pregunta
 var respuesta=null;
 var respuestasCheckbox = [];
  
-//al cargar la página... 
+//Después de cargar la página (onload) se definen los eventos sobre los elementos
 window.onload = function(){ 
 
- //pide los datos, lee preguntas.xml del servidor (por http)
+ //LLEE XML de xml/preguntas.xml
  var xhttp = new XMLHttpRequest();
  xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -17,24 +17,10 @@ window.onload = function(){
  xhttp.send();
  
  
- //Para corregir gestionamos el contenido introducido en el formulario y rellenamos resultContainer con los resulados
+ //al enviar... CORREGIR
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
-  var resultContainer=document.getElementById('resultContainer');
-  resultContainer.innerHTML = "";
-  var s=formElement.elements[0].value; 
-  
-  var para = document.createElement("p");
-  var node = null;  
-  
-  //corrección número secreto
-  if (s==secret) node = document.createTextNode("P1: Exacto!");
-  else {
-    if (s>secret) node = document.createTextNode("P1: Te has pasado");
-    else node = document.createTextNode("P1: Te has quedado corto");
-  }
-  para.appendChild(node);
-  resultContainer.appendChild(para);
+   corregirNumber();
   
   //corrección select
   var sel = formElement.elements[1];  
@@ -105,5 +91,22 @@ function gestionarXml(dadesXml){
  for (i = 0; i < nrespuestas; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue
  }
- 
+}
+
+function corregirNumber(){
+  var resultContainer=document.getElementById('resultContainer');
+  resultContainer.innerHTML = ""; //vaciar cada vez
+  var s=formElement.elements[0].value; 
+  
+  var para = document.createElement("p");
+  var node = null;  
+  
+  //corrección número secreto
+  if (s==secret) node = document.createTextNode("P1: Exacto!");
+  else {
+    if (s>secret) node = document.createTextNode("P1: Te has pasado");
+    else node = document.createTextNode("P1: Te has quedado corto");
+  }
+  para.appendChild(node);
+  resultContainer.appendChild(para);
 }
