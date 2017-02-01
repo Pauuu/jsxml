@@ -11,7 +11,7 @@ window.onload = function(){
  formElement.onsubmit=function(){
    corregirNumber();
    corregirSelect();
-   corregirCheckbox();  
+   corregirCheckbox(formElement);  
    return false;
  }
  //LEER XML de xml/preguntas.xml
@@ -66,6 +66,7 @@ function gestionarXml(dadesXml){
     label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
     label.setAttribute("for", "color_"+i);
     input.type="checkbox";
+    input.name="color1";
     input.id="color_"+i;;    
     checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
@@ -106,8 +107,12 @@ function corregirSelect(){
   resultContainer.appendChild(para);
 }
 
-function corregirCheckbox(){
- for (i = 0; i < respuestasCheckbox.lenght; i++) {
-   alert(respuestasCheckbox[i]);
+function corregirCheckbox(f){
+  var todasCorrectas=true;
+  for (i = 0; i < respuestasCheckbox.length; i++) {   
+   if (!f.color1[respuestasCheckbox[i]].checked ) todasCorrectas=false;
   }
+  var para = document.createElement("p");
+  if (todasCorrectas) document.createTextNode("P3: todas las respuestas correctas");
+  else document.createTextNode("P3: tienes respuestas incorrectas");
 }
