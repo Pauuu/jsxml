@@ -1,7 +1,7 @@
 # jsxml
 
 v.3
-Se ha añadido un div en el que se cargan todas las opciones de tipo checkbox. Se han creado funciones para corregir cada tipo de pregunta. La presentación de los resultados se hace en un div.
+Se ha añadido un div en el que se cargan todas las opciones de tipo checkbox. Se han creado funciones para corregir cada tipo de pregunta, y para separar la carga de datos (I) la corrección (II) y la presentación de resultados (III). La presentación de los resultados se hace en un div.
 
 v.2
 Se ha añadido un elemento select al html y código js para leer el título y las opciones de tipo select y rellenar el select html. Además guarda la respuesta correcta para poder comprobar que la opción seleccionada es la correcta.
