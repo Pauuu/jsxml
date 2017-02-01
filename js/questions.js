@@ -10,6 +10,7 @@ window.onload = function(){
  //CORREGIR al apretar el botón
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
+   borrarRespuestas();
    corregirNumber();
    corregirSelect();
    corregirCheckbox();  
@@ -81,29 +82,19 @@ function gestionarXml(dadesXml){
 //****************************************************************************************************
 //implementación de la corrección y su presentación
 function corregirNumber(){
-  var resultContainer=document.getElementById('resultContainer');
-  resultContainer.innerHTML = ""; //vaciar cada vez
-  var s=formElement.elements[0].value;   
-  var para = document.createElement("p");
-  var node = null;    
+  var s=formElement.elements[0].value;     
   //corrección número secreto
-  if (s==secret) node = document.createTextNode("P1: Exacto!");
+  if (s==secret) darRespuesta("P1: Exacto!");
   else {
-    if (s>secret) node = document.createTextNode("P1: Te has pasado");
-    else node = document.createTextNode("P1: Te has quedado corto");
+    if (s>secret) darRespuesta("P1: Te has pasado");
+    else darRespuesta("P1: Te has quedado corto");
   }
-  para.appendChild(node);
-  resultContainer.appendChild(para);
 }
 
 function corregirSelect(){
   var sel = formElement.elements[1];  
-  var para = document.createElement("p");
-  var node = null;  
-  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
-  else node = document.createTextNode("P2: Select incorrecto");
-  para.appendChild(node);
-  resultContainer.appendChild(para);
+  if (sel.selectedIndex==respuesta) darRespuesta("P2: Select correcto");
+  else darRespuesta("P2: Select incorrecto");
 }
 
 function corregirCheckbox(){
@@ -118,15 +109,25 @@ function corregirCheckbox(){
    } 
   }
   for (i = 0; i < f.color.length; i++) {
-   var para = document.createElement("p");
+   
    if (f.color[i].checked) {
     if (escorrecta[i]) {
-     node = document.createTextNode("P3: "+i+" correcta");    
+     darRespuesta("P3: "+i+" correcta");    
     } else {
-     node = document.createTextNode("P3: "+i+" incorrecta");
-    }
-    para.appendChild(node);
-    resultContainer.appendChild(para);
+     darRespuesta("P3: "+i+" incorrecta");
+    }   
    }
   }
+}
+
+function darRespuesta(r){
+ var resultContainer=document.getElementById('resultContainer');
+ var p = document.createElement("p");
+ node = document.createTextNode(r);
+ p.appendChild(node);
+ resultContainer.appendChild(p);
+}
+function borrarRespuestas(){
+   var resultContainer=document.getElementById('resultContainer');
+   resultContainer.innerHTML = "";
 }
