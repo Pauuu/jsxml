@@ -80,7 +80,7 @@ function gestionarXml(dadesXml){
 }
 
 //****************************************************************************************************
-//implementación de la corrección y su presentación
+//implementación de la corrección
 function corregirNumber(){
   var s=formElement.elements[0].value;     
   //corrección número secreto
@@ -120,6 +120,8 @@ function corregirCheckbox(){
   }
 }
 
+//****************************************************************************************************
+//implementación de la presentación
 function darRespuesta(r){
  var resultContainer=document.getElementById('resultContainer');
  var p = document.createElement("p");
