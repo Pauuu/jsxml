@@ -18,15 +18,28 @@ window.onload = function(){
  //Para corregir gestionamos el contenido introducido en el formulario
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
+  var resultContainer=document.getElementById('resultContainer');
   var s=formElement.elements[0].value; 
-  if (s==secret) alert('Número correcto');
+  
+  var para = document.createElement("p");
+  var node = null;  
+
+  if (s==secret) node = document.createTextNode("P1: Número correcto");
   else {
-    if (s>secret) alert('te has pasado');
-    else alert('te has quedado corto');
+    if (s>secret) node = document.createTextNode("P1: Te has pasado");
+    else node = document.createTextNode("P1: Te has quedado corto");
   }
+  para.appendChild(node);
+  resultContainer.appendChild(para);
+  
   //corrección select
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex==respuesta) alert('Select correcto'); else alert('Select incorrecto');
+  var para = document.createElement("p");
+  var node = null;  
+  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
+  else node = document.createTextNode("P2: Select incorrecto");
+  para.appendChild(node);
+  resultContainer.appendChild(para);
   return false;
  }
 }
@@ -48,7 +61,7 @@ function gestionarXml(dadesXml){
  //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
-    option.text = xmlDoc.getElementsById("profe_002")[i].childNodes[0].nodeValue;
+    option.text = xmlDoc.getElementById("profe_002")[i].childNodes[0].nodeValue;
     option.value=i+1;
     select.options.add(option);
  } 
