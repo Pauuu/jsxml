@@ -115,10 +115,10 @@ function corregirCheckbox(){
   var f=document.getElementById('myform');
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {
-   //incompleto...
    if (f.color[i].checked) {
+    escorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox.length; j++) {
-     if (i==respuestasCheckbox[j]) escorrecta[i]=true; else escorrecta[i]=false;
+     if (i==respuestasCheckbox[j]) escorrecta[i]=true;
     }
    } 
   }
