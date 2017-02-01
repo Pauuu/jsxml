@@ -75,7 +75,7 @@ function gestionarXml(dadesXml){
  //guardamos todas las respuestas correctas de checkbox
  var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
  for (i = 0; i < nrespuestas; i++) { 
-  respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue
+  respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue;
  }
 }
 
@@ -83,7 +83,6 @@ function gestionarXml(dadesXml){
 //implementación de la corrección
 function corregirNumber(){
   var s=formElement.elements[0].value;     
-  //corrección número secreto
   if (s==secret) darRespuesta("P1: Exacto!");
   else {
     if (s>secret) darRespuesta("P1: Te has pasado");
