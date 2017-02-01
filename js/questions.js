@@ -87,7 +87,7 @@ function gestionarXml(dadesXml){
     var input = document.createElement("input");
     var label = document.createElement("label");
     label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
-    label.for="color_"+i;
+    label..setAttribute("for", "color_"+i);
     input.type="checkbox";
     input.id="color_"+i;;
     checkboxContainer.appendChild(input);
