@@ -113,14 +113,22 @@ function corregirSelect(){
 
 function corregirCheckbox(){
   var f=document.getElementById('myform');
-  var todasCorrectas=true;
+  var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {
    //incompleto...
-   if ((f.color[i].checked ) && (i==respuestasCheckbox[i])) todasCorrectas=false;
+   if (f.color[i].checked) {
+    for (j = 0; j < respuestasCheckbox.length; j++) {
+     if (i==respuestasCheckbox[j]) escorrecta[i]=true; else escorrecta[i]=false;
+    }
+   } 
   }
-  var para = document.createElement("p");
-  if (todasCorrectas) node = document.createTextNode("P3: todas las respuestas correctas");
-  else node = document.createTextNode("P3: tienes respuestas incorrectas");
-  para.appendChild(node);
-  resultContainer.appendChild(para);
+  for (i = 0; i < f.color.length; i++) {
+   var para = document.createElement("p");
+   if (escorrecta[i]) {
+    node = document.createTextNode("P3: "+i+" correcta");
+    //else node = document.createTextNode("P3: tienes respuestas incorrectas");
+    para.appendChild(node);
+    resultContainer.appendChild(para);
+   }
+  }
 }
