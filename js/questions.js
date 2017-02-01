@@ -48,7 +48,7 @@ function gestionarXml(dadesXml){
  //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
-    option.text = xmlDoc.getElementsByTagName("option")[i].childNodes[0].nodeValue;
+    option.text = xmlDoc.getElementsById("profe_002")[i].childNodes[0].nodeValue;
     option.value=i+1;
     select.options.add(option);
  } 
