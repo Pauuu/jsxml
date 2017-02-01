@@ -16,4 +16,15 @@
 	<option>Hypertext markup language</option>
 	<answer>2</answer>
     </question>
+     <question id="profe_002">
+	<type>checkbox</type>
+	<title>Marca las frutas</title>
+	<option>naranja</option>
+	<option>verde</option>
+	<option>fresa</option>
+	<option>violeta</option>
+	<answer>0</answer>
+	<answer>2</answer>
+    </question>
+	
 </questions>
