@@ -1,4 +1,3 @@
-var formElement=null;
 var secret=null;
 var respuesta=null;
 var respuestasCheckbox = [];
@@ -8,9 +7,9 @@ var respuestasCheckbox = [];
 window.onload = function(){ 
 
  //CORREGIR al apretar el botón
- formElement=document.getElementById('myform');
+ var formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
-   borrarRespuestas();
+   borrarCorreccion();
    corregirNumber();
    corregirSelect();
    corregirCheckbox();  
@@ -129,7 +128,7 @@ function darRespuesta(r){
  p.appendChild(node);
  resultContainer.appendChild(p);
 }
-function borrarRespuestas(){
+function borrarCorreccion(){
    var resultContainer=document.getElementById('resultContainer');
    resultContainer.innerHTML = "";
 }
