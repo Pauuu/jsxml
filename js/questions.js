@@ -15,7 +15,7 @@ window.onload = function(){
  xhttp.open("GET", "xml/preguntas.xml", true);
  xhttp.send();
  
- //Para corregir gestionamos el contenido introducido en el formulario
+ //Para corregir gestionamos el contenido introducido en el formulario y rellenamos resultContainer con los resulados
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
   var resultContainer=document.getElementById('resultContainer');
@@ -23,7 +23,8 @@ window.onload = function(){
   
   var para = document.createElement("p");
   var node = null;  
-
+  
+  //corrección número secreto
   if (s==secret) node = document.createTextNode("<h1>P1</h1><p>Número correcto</p>");
   else {
     if (s>secret) node = document.createTextNode("<h1>P1</h1><p>Te has pasado</p>");
@@ -44,14 +45,14 @@ window.onload = function(){
  }
 }
 
-//funcion donde cogemos los datos del xml y los ponemos en el html 
+//función donde cogemos los datos del xml y los ponemos en el html 
 function gestionarXml(dadesXml){
- //Rellenamos p title y guardamos el número secreto
+ //Rellenamos title y guardamos el número secreto
  var xmlDoc = dadesXml.responseXML;
  document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
  secret=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
- //Rellenamos p selecttitle y guardamos la respuesta para corregir
+ //Rellenamos selecttitle
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  
  //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML.
