@@ -54,9 +54,9 @@ function gestionarXml(dadesXml){
  //Checkbox
  var checkboxContainer=document.getElementById('checkboxContainer');
  //Añadimos un párrafo para albergar el título de la pregunta de checkbox
- var p = document.createElement("p");
- p.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
- checkboxContainer.appendChild(p);
+ var h3 = document.createElement("h3");
+ h3.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
+ checkboxContainer.appendChild(h3);
  
  //añadimos todas las opciones de checkbox
  var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
@@ -118,7 +118,8 @@ function corregirCheckbox(){
    if (!f.color[respuestasCheckbox[i]].checked ) todasCorrectas=false;
   }
   var para = document.createElement("p");
-  if (todasCorrectas) document.createTextNode("P3: todas las respuestas correctas");
-  else document.createTextNode("P3: tienes respuestas incorrectas");
+  if (todasCorrectas) node = document.createTextNode("P3: todas las respuestas correctas");
+  else node = document.createTextNode("P3: tienes respuestas incorrectas");
+  para.appendChild(node);
   resultContainer.appendChild(para);
 }
