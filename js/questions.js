@@ -15,6 +15,7 @@ window.onload = function(){
    corregirCheckbox();  
    return false;
  }
+ 
  //LEER XML de xml/preguntas.xml
  var xhttp = new XMLHttpRequest();
  xhttp.onreadystatechange = function() {
@@ -23,24 +24,25 @@ window.onload = function(){
   }
  };
  xhttp.open("GET", "xml/preguntas.xml", true);
- xhttp.send(); 
+ xhttp.send();
 }
 
 //****************************************************************************************************
 // XML -> HTML
+//RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
+ 
+ //NUMBER
  //Rellenamos title y guardamos el número secreto
  var xmlDoc = dadesXml.responseXML;
  document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
  secret=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
+ //SELECT
  //Rellenamos selecttitle
  document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
- 
- //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML.
  var select = document.getElementsByTagName("select")[0];
- var nopciones = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length; //cuantas opciones hay en el XML
- 
+ var nopciones = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length; //cuantas opciones hay en el XML 
  //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
@@ -51,17 +53,13 @@ function gestionarXml(dadesXml){
  //nos quedamos la respuesta para la corrección.
  respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
- //Checkbox
+ //CHECKBOX
  var checkboxContainer=document.getElementById('checkboxContainer');
- //Añadimos un párrafo para albergar el título de la pregunta de checkbox
  var h3 = document.createElement("h3");
  h3.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
- checkboxContainer.appendChild(h3);
- 
+ checkboxContainer.appendChild(h3); 
  //añadimos todas las opciones de checkbox
  var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
- 
- //Bucle para rellenar todas las opciones checkbox
  for (i = 0; i < nopciones; i++) { 
     var input = document.createElement("input");
     var label = document.createElement("label");
@@ -73,9 +71,8 @@ function gestionarXml(dadesXml){
     checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
  }  
- //guardamos todas las respuestas correctas
+ //guardamos todas las respuestas correctas de checkbox
  var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
- //Bucle para guardar las respuestas
  for (i = 0; i < nrespuestas; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue
  }
@@ -86,11 +83,9 @@ function gestionarXml(dadesXml){
 function corregirNumber(){
   var resultContainer=document.getElementById('resultContainer');
   resultContainer.innerHTML = ""; //vaciar cada vez
-  var s=formElement.elements[0].value; 
-  
+  var s=formElement.elements[0].value;   
   var para = document.createElement("p");
-  var node = null;  
-  
+  var node = null;    
   //corrección número secreto
   if (s==secret) node = document.createTextNode("P1: Exacto!");
   else {
