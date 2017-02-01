@@ -111,9 +111,10 @@ function corregirCheckbox(){
   var f=document.getElementById('myform');
   var todasCorrectas=true;
   for (i = 0; i < respuestasCheckbox.length; i++) {   
-   if (f.color[respuestasCheckbox[i]].checked ) {} else todasCorrectas=false;
+   if (!f.color[respuestasCheckbox[i]].checked ) todasCorrectas=false;
   }
   var para = document.createElement("p");
   if (todasCorrectas) document.createTextNode("P3: todas las respuestas correctas");
   else document.createTextNode("P3: tienes respuestas incorrectas");
+  resultContainer.appendChild(para);
 }
