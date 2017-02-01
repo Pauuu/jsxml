@@ -1,12 +1,20 @@
 var formElement=null;
-var secret=50; //ahora se lee 23 de <answer>23</answer> suministrado en preguntas.xml
+var secret=null;
 var respuesta=null;
 var respuestasCheckbox = [];
  
-//Después de cargar la página (onload) se definen los eventos sobre los elementos
+//Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
 window.onload = function(){ 
-
- //LLEE XML de xml/preguntas.xml
+ 
+ //CORREGIR al apretar el botón
+ formElement=document.getElementById('myform');
+ formElement.onsubmit=function(){
+   corregirNumber();
+   corregirSelect();
+   corregirCheckbox();  
+   return false;
+ }
+ //LEER XML de xml/preguntas.xml
  var xhttp = new XMLHttpRequest();
  xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -14,33 +22,10 @@ window.onload = function(){
   }
  };
  xhttp.open("GET", "xml/preguntas.xml", true);
- xhttp.send();
- 
- 
- //al enviar... CORREGIR
- formElement=document.getElementById('myform');
- formElement.onsubmit=function(){
-   corregirNumber();
-  
-  //corrección select
-  var sel = formElement.elements[1];  
-  var para = document.createElement("p");
-  var node = null;  
-  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
-  else node = document.createTextNode("P2: Select incorrecto");
-  para.appendChild(node);
-  resultContainer.appendChild(para);
-  
-  //Corregir input type checkbox
-  for (i = 0; i < respuestasCheckbox.lenght; i++) {
-   alert(respuestasCheckbox[i]);
-  }
-  
-  return false;
- }
+ xhttp.send(); 
 }
 
-//función donde cogemos los datos del xml y los ponemos en el html 
+// XML -> HTML
 function gestionarXml(dadesXml){
  //Rellenamos title y guardamos el número secreto
  var xmlDoc = dadesXml.responseXML;
@@ -109,4 +94,20 @@ function corregirNumber(){
   }
   para.appendChild(node);
   resultContainer.appendChild(para);
+}
+
+function corregirSelect(){
+  var sel = formElement.elements[1];  
+  var para = document.createElement("p");
+  var node = null;  
+  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
+  else node = document.createTextNode("P2: Select incorrecto");
+  para.appendChild(node);
+  resultContainer.appendChild(para);
+}
+
+function corregirCheckbox(){
+ for (i = 0; i < respuestasCheckbox.lenght; i++) {
+   alert(respuestasCheckbox[i]);
+  }
 }
