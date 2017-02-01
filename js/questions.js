@@ -2,10 +2,11 @@ var formElement=null;
 var secret=null;
 var respuesta=null;
 var respuestasCheckbox = [];
- 
+
+//**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
 window.onload = function(){ 
- 
+
  //CORREGIR al apretar el botón
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
@@ -25,6 +26,7 @@ window.onload = function(){
  xhttp.send(); 
 }
 
+//****************************************************************************************************
 // XML -> HTML
 function gestionarXml(dadesXml){
  //Rellenamos title y guardamos el número secreto
@@ -79,6 +81,8 @@ function gestionarXml(dadesXml){
  }
 }
 
+//****************************************************************************************************
+//implementación de la corrección y su presentación
 function corregirNumber(){
   var resultContainer=document.getElementById('resultContainer');
   resultContainer.innerHTML = ""; //vaciar cada vez
