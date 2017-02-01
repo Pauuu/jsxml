@@ -15,20 +15,22 @@ window.onload = function(){
  xhttp.open("GET", "xml/preguntas.xml", true);
  xhttp.send();
  
+ 
  //Para corregir gestionamos el contenido introducido en el formulario y rellenamos resultContainer con los resulados
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
   var resultContainer=document.getElementById('resultContainer');
+  resultContainer.innerHTML = "";
   var s=formElement.elements[0].value; 
   
   var para = document.createElement("p");
   var node = null;  
   
   //corrección número secreto
-  if (s==secret) node = document.createTextNode("<h1>P1</h1><p>Número correcto</p>");
+  if (s==secret) node = document.createTextNode("P1: Exacto!");
   else {
-    if (s>secret) node = document.createTextNode("<h1>P1</h1><p>Te has pasado</p>");
-    else node = document.createTextNode("<h1>P1</h1><p>Te has quedado corto</p>");
+    if (s>secret) node = document.createTextNode("P1: Te has pasado");
+    else node = document.createTextNode("P1: Te has quedado corto");
   }
   para.appendChild(node);
   resultContainer.appendChild(para);
@@ -37,8 +39,8 @@ window.onload = function(){
   var sel = formElement.elements[1];  
   var para = document.createElement("p");
   var node = null;  
-  if (sel.selectedIndex==respuesta) node = document.createTextNode("<h1>P2</h1><p>Select correcto</p>");
-  else node = document.createTextNode("<h1>P2</h1><p>Select incorrecto</p>");
+  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
+  else node = document.createTextNode("P2: Select incorrecto");
   para.appendChild(node);
   resultContainer.appendChild(para);
   return false;
@@ -57,12 +59,12 @@ function gestionarXml(dadesXml){
  
  //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML.
  var select = document.getElementsByTagName("select")[0];
- var nopciones = xmlDoc.getElementsByTagName("option").length; //cuantas opciones hay en el XML
+ var nopciones = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length; //cuantas opciones hay en el XML
  
  //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
-    option.text = xmlDoc.getElementById("profe_002").childNodes[0].nodeValue;
+    option.text = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
     option.value=i+1;
     select.options.add(option);
  } 
