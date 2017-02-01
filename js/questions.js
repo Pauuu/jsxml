@@ -76,8 +76,7 @@ function gestionarXml(dadesXml){
  var checkboxContainer=document.getElementById('checkboxContainer');
  //Añadimos un párrafo para albergar el título de la pregunta de checkbox
  var p = document.createElement("p");
- var node = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
- p.appendChild(node);
+ p.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
  checkboxContainer.appendChild(p);
  
  //añadimos todas las opciones de checkbox
