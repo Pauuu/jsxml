@@ -55,11 +55,12 @@ function gestionarXml(dadesXml){
  respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
  //CHECKBOX
+ //creamos un elemento h3 para introducirlo como título en el checkboxContainer (div)
  var checkboxContainer=document.getElementById('checkboxContainer');
  var h3 = document.createElement("h3");
  h3.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
  checkboxContainer.appendChild(h3); 
- //añadimos todas las opciones de checkbox
+ //añadimos todas las opciones de checkbox (como <input type='checkbox' name='color'>) con su label
  var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
  for (i = 0; i < nopciones; i++) { 
     var input = document.createElement("input");
