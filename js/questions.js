@@ -114,8 +114,9 @@ function corregirSelect(){
 function corregirCheckbox(){
   var f=document.getElementById('myform');
   var todasCorrectas=true;
-  for (i = 0; i < respuestasCheckbox.length; i++) {   
-   if (!f.color[respuestasCheckbox[i]].checked ) todasCorrectas=false;
+  for (i = 0; i < f.color.length; i++) {
+   //incompleto...
+   if ((f.color[i].checked ) && (i==respuestasCheckbox[i])) todasCorrectas=false;
   }
   var para = document.createElement("p");
   if (todasCorrectas) node = document.createTextNode("P3: todas las respuestas correctas");
