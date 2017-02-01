@@ -95,9 +95,9 @@ function gestionarXml(dadesXml){
     label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
     label.setAttribute("for", "color_"+i);
     input.type="checkbox";
-    input.id="color_"+i;;
+    input.id="color_"+i;;    
+    checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
-    checkboxContainer.appendChild(input);    
  }  
  //guardamos todas las respuestas correctas
  var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
