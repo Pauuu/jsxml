@@ -1,3 +1,4 @@
+var formElement=null;
 var secret=null;
 var respuesta=null;
 var respuestasCheckbox = [];
@@ -7,7 +8,7 @@ var respuestasCheckbox = [];
 window.onload = function(){ 
 
  //CORREGIR al apretar el botón
- var formElement=document.getElementById('myform');
+ formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
    borrarCorreccion();
    corregirNumber();
