@@ -124,9 +124,12 @@ function corregirCheckbox(){
   }
   for (i = 0; i < f.color.length; i++) {
    var para = document.createElement("p");
-   if (escorrecta[i]) {
-    node = document.createTextNode("P3: "+i+" correcta");
-    //else node = document.createTextNode("P3: tienes respuestas incorrectas");
+   if (f.color[i].checked) {
+    if (escorrecta[i]) {
+     node = document.createTextNode("P3: "+i+" correcta");    
+    } else {
+     node = document.createTextNode("P3: "+i+" incorrecta");
+    }
     para.appendChild(node);
     resultContainer.appendChild(para);
    }
