@@ -24,10 +24,10 @@ window.onload = function(){
   var para = document.createElement("p");
   var node = null;  
 
-  if (s==secret) node = document.createTextNode("P1: Número correcto");
+  if (s==secret) node = document.createTextNode("<h1>P1</h1><p>Número correcto</p>");
   else {
-    if (s>secret) node = document.createTextNode("P1: Te has pasado");
-    else node = document.createTextNode("P1: Te has quedado corto");
+    if (s>secret) node = document.createTextNode("<h1>P1</h1><p>Te has pasado</p>");
+    else node = document.createTextNode("<h1>P1</h1><p>Te has quedado corto</p>");
   }
   para.appendChild(node);
   resultContainer.appendChild(para);
@@ -36,8 +36,8 @@ window.onload = function(){
   var sel = formElement.elements[1];  
   var para = document.createElement("p");
   var node = null;  
-  if (sel.selectedIndex==respuesta) node = document.createTextNode("P2: Select correcto");
-  else node = document.createTextNode("P2: Select incorrecto");
+  if (sel.selectedIndex==respuesta) node = document.createTextNode("<h1>P2</h1><p>Select correcto</p>");
+  else node = document.createTextNode("<h1>P2</h1><p>Select incorrecto</p>");
   para.appendChild(node);
   resultContainer.appendChild(para);
   return false;
@@ -61,7 +61,7 @@ function gestionarXml(dadesXml){
  //Bucle para rellenar todas las opciones de select
  for (i = 0; i < nopciones; i++) { 
     var option = document.createElement("option");
-    option.text = xmlDoc.getElementById("profe_002")[i].childNodes[0].nodeValue;
+    option.text = xmlDoc.getElementById("profe_002").childNodes[0].nodeValue;
     option.value=i+1;
     select.options.add(option);
  } 
