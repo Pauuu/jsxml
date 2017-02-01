@@ -1,6 +1,7 @@
 var formElement=null;
 var secret=50; //ahora se lee 23 de <answer>23</answer> suministrado en preguntas.xml
 var respuesta=null;
+var respuestasCheckbox = [];
  
 //al cargar la página... 
 window.onload = function(){ 
@@ -67,9 +68,30 @@ function gestionarXml(dadesXml){
     option.text = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
     option.value=i+1;
     select.options.add(option);
- } 
- 
+ }  
  //nos quedamos la respuesta para la corrección.
  respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
+ //Checkbox
+ var checkboxContainer=document.getElementById('checkboxContainer');
+ //Añadimos un párrafo para albergar el título de la pregunta de checkbox
+ var p = document.createElement("p");
+ var node = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
+ p.appendChild(node);
+ checkboxContainer.appendChild(p);
+ 
+ //añadimos todas las opciones de checkbox
+ var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
+ 
+ //Bucle para rellenar todas las opciones checkbox
+ for (i = 0; i < nopciones; i++) { 
+    var input = document.createElement("input");
+    var label = document.createElement("label");
+    label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
+    input.type="checkbox";
+    checkboxContainer.appendChild(input);
+    checkboxContainer.appendChild(label);
+ }  
+ 
+ 
 }
