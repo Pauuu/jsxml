@@ -29,19 +29,19 @@ window.onload = function(){
 }
 
 //****************************************************************************************************
-// XML -> HTML
-//RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML. 
+// Recuperamos los datos del fichero XML xml/preguntas.xml
+// xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
  var xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
  
  //NUMBER
- //Recuperamos el título y la respuesta correcta de Input
+ //Recuperamos el título y la respuesta correcta de Input, guardamos el número secreto
  var tituloInput=xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
  ponerDatosInputHtml(tituloInput);
  numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
  //SELECT
- //Recuperamos el título y las opciones
+ //Recuperamos el título y las opciones, guardamos la respuesta correcta
  var tituloSelect=xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
  var opcionesSelect = [];
  var nopt = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length;
@@ -52,7 +52,7 @@ function gestionarXml(dadesXml){
  respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
  //CHECKBOX
- //Recuperamos el título y las opciones
+ //Recuperamos el título y las opciones, guardamos las respuestas correctas
  var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
  var opcionesCheckbox = [];
  var nopt = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
@@ -60,10 +60,8 @@ function gestionarXml(dadesXml){
     opcionesCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
  ponerDatosCheckboxHtml(tituloCheckbox,opcionesCheckbox);
- 
- //guardamos todas las respuestas correctas de checkbox
- var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
- for (i = 0; i < nrespuestas; i++) { 
+ var nres = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
+ for (i = 0; i < nres; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].childNodes[0].nodeValue;
  }
 }
@@ -72,17 +70,17 @@ function gestionarXml(dadesXml){
 //implementación de la corrección
 function corregirNumber(){
   var s=formElement.elements[0].value;     
-  if (s==numeroSecreto) darRespuesta("P1: Exacto!");
+  if (s==numeroSecreto) darRespuestaHtml("P1: Exacto!");
   else {
-    if (s>numeroSecreto) darRespuesta("P1: Te has pasado");
-    else darRespuesta("P1: Te has quedado corto");
+    if (s>numeroSecreto) darRespuestaHtml("P1: Te has pasado");
+    else darRespuestaHtml("P1: Te has quedado corto");
   }
 }
 
 function corregirSelect(){
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex==respuestaSelect) darRespuesta("P2: Select correcto");
-  else darRespuesta("P2: Select incorrecto");
+  if (sel.selectedIndex==respuestaSelect) darRespuestaHtml("P2: Select correcto");
+  else darRespuestaHtml("P2: Select incorrecto");
 }
 
 function corregirCheckbox(){
@@ -100,16 +98,16 @@ function corregirCheckbox(){
    
    if (f.color[i].checked) {
     if (escorrecta[i]) {
-     darRespuesta("P3: "+i+" correcta");    
+     darRespuestaHtml("P3: "+i+" correcta");    
     } else {
-     darRespuesta("P3: "+i+" incorrecta");
+     darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    }
   }
 }
 
 //****************************************************************************************************
-//implementación de la presentación
+// poner los datos recibios en el HTML
 function ponerDatosInputHtml(t){
  document.getElementById("tituloInput").innerHTML = t;
 }
@@ -143,8 +141,9 @@ function ponerDatosCheckboxHtml(t,opt){
  }  
 }
 
-
-function darRespuesta(r){
+//****************************************************************************************************
+//Gestionar la presentación de las respuestas
+function darRespuestaHtml(r){
  var resDiv=document.getElementById('resultadosDiv');
  var p = document.createElement("p");
  var node = document.createTextNode(r);
