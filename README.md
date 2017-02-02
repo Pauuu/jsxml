@@ -1,5 +1,7 @@
 # jsxml
 
+v.4 Se ha dividido la carga de datos dos partes, la recepción y la presentación. Se han modificado los nombres de las variables para ser más descriptivas.
+
 v.3
 Se ha añadido un div en el que se cargan todas las opciones de tipo checkbox. Se han creado funciones para corregir cada tipo de pregunta, y para separar la carga de datos (I) la corrección (II) y la presentación de resultados (III). La presentación de los resultados se hace en un div.
 
