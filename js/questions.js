@@ -48,15 +48,13 @@ function gestionarXml(dadesXml){
   for (i = 0; i < nopt; i++) { 
     optionsSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }
- ponerDatosSelect(tituloSelect,optionsSelect);
+ ponerDatosSelectHtml(tituloSelect,optionsSelect);
  respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
  //CHECKBOX
- //creamos un elemento h3 para introducirlo como título en el checkboxContainer (div)
- var checkboxContainer=document.getElementById('checkboxContainer');
- var h3 = document.createElement("h3");
- h3.innerHTML = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
- checkboxContainer.appendChild(h3); 
+ var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
+ var optionsSelect = [];
+ 
  //añadimos todas las opciones de checkbox (como <input type='checkbox' name='color'>) con su label
  var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
  for (i = 0; i < nopciones; i++) { 
@@ -70,6 +68,8 @@ function gestionarXml(dadesXml){
     checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
  }  
+  ponerDatosCheckboxHtml(tituloCheckbox,opt)
+ 
  //guardamos todas las respuestas correctas de checkbox
  var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
  for (i = 0; i < nrespuestas; i++) { 
@@ -119,8 +119,12 @@ function corregirCheckbox(){
 
 //****************************************************************************************************
 //implementación de la presentación
+function ponerDatosInputHtml(t){
+ document.getElementById("tituloInput").innerHTML = t;
+}
 
-function ponerDatosSelect(t,opt){
+function ponerDatosSelectHtml(t,opt){
+ document.getElementById("tituloSelect").innerHTML=t;
   var select = document.getElementsByTagName("select")[0];
   for (i = 0; i < nopt; i++) { 
     var option = document.createElement("option");
@@ -130,19 +134,24 @@ function ponerDatosSelect(t,opt){
  }  
 }
 
-function ponerDatosInputHtml(t){
- document.getElementById("tituloInput").innerHTML = t;
+function ponerDatosCheckboxHtml(t,opt){
+ var checkboxContainer=document.getElementById('checkboxDiv');
+ var h3 = document.createElement("h3");
+ h3.innerHTML = t;
+ checkboxContainer.appendChild(h3); 
+ 
 }
 
+
 function darRespuesta(r){
- var resultContainer=document.getElementById('resultContainer');
+ var resDiv=document.getElementById('resultadosDiv');
  var p = document.createElement("p");
- node = document.createTextNode(r);
+ var node = document.createTextNode(r);
  p.appendChild(node);
- resultContainer.appendChild(p);
+ resDiv.appendChild(p);
 }
 
 function borrarCorreccion(){
-   var resultContainer=document.getElementById('resultContainer');
-   resultContainer.innerHTML = "";
+   var resDiv=document.getElementById('resultadosDiv');
+   resDiv.innerHTML = "";
 }
