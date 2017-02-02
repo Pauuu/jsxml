@@ -43,32 +43,23 @@ function gestionarXml(dadesXml){
  //SELECT
  //Recuperamos el título y las opciones
  var tituloSelect=xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
- var optionsSelect = [];
+ var opcionesSelect = [];
  var nopt = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length;
   for (i = 0; i < nopt; i++) { 
-    optionsSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
+    opcionesSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }
- ponerDatosSelectHtml(tituloSelect,optionsSelect);
+ ponerDatosSelectHtml(tituloSelect,opcionesSelect);
  respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
  //CHECKBOX
+ //Recuperamos el título y las opciones
  var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
- var optionsSelect = [];
- 
- //añadimos todas las opciones de checkbox (como <input type='checkbox' name='color'>) con su label
- var nopciones = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
- for (i = 0; i < nopciones; i++) { 
-    var input = document.createElement("input");
-    var label = document.createElement("label");
-    label.innerHTML = xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
-    label.setAttribute("for", "color_"+i);
-    input.type="checkbox";
-    input.name="color";
-    input.id="color_"+i;;    
-    checkboxContainer.appendChild(input);
-    checkboxContainer.appendChild(label);
+ var opcionesCheckbox = [];
+ var nopt = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
+ for (i = 0; i < nopt; i++) { 
+    opcionesCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].childNodes[0].nodeValue;
  }  
-  ponerDatosCheckboxHtml(tituloCheckbox,opt)
+ ponerDatosCheckboxHtml(tituloCheckbox,opcionesCheckbox);
  
  //guardamos todas las respuestas correctas de checkbox
  var nrespuestas = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
@@ -124,9 +115,9 @@ function ponerDatosInputHtml(t){
 }
 
 function ponerDatosSelectHtml(t,opt){
- document.getElementById("tituloSelect").innerHTML=t;
+  document.getElementById("tituloSelect").innerHTML=t;
   var select = document.getElementsByTagName("select")[0];
-  for (i = 0; i < nopt; i++) { 
+  for (i = 0; i < opt.length; i++) { 
     var option = document.createElement("option");
     option.text = opt[i];
     option.value=i+1;
@@ -139,7 +130,17 @@ function ponerDatosCheckboxHtml(t,opt){
  var h3 = document.createElement("h3");
  h3.innerHTML = t;
  checkboxContainer.appendChild(h3); 
- 
+ for (i = 0; i < opt.length; i++) { 
+    var input = document.createElement("input");
+    var label = document.createElement("label");
+    label.innerHTML=opt[i];
+    label.setAttribute("for", "color_"+i);
+    input.type="checkbox";
+    input.name="color";
+    input.id="color_"+i;;    
+    checkboxContainer.appendChild(input);
+    checkboxContainer.appendChild(label);
+ }  
 }
 
 
