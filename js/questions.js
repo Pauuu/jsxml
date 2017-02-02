@@ -1,6 +1,6 @@
 var formElement=null;
-var secret=null;
-var respuesta=null;
+var numeroSecreto=null;
+var respuestaSelect=null;
 var respuestasCheckbox = [];
 
 //**************************************************************************************************** 
@@ -32,27 +32,24 @@ window.onload = function(){
 // XML -> HTML
 //RECUERDA document se refiere al documento HTML, xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
+ var xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
  
  //NUMBER
- //Rellenamos title y guardamos el número secreto
- var xmlDoc = dadesXml.responseXML;
- document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
- secret=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
+ //Recuperamos el título y la respuesta correcta de Input
+ var tituloInput=xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+ ponerDatosInputHtml(tituloInput,respuestaInput);
+ numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].childNodes[0].nodeValue);
  
  //SELECT
- //Rellenamos selecttitle
- document.getElementById("selecttitle").innerHTML = xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
- var select = document.getElementsByTagName("select")[0];
- var nopciones = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length; //cuantas opciones hay en el XML 
- //Bucle para rellenar todas las opciones de select
- for (i = 0; i < nopciones; i++) { 
-    var option = document.createElement("option");
-    option.text = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
-    option.value=i+1;
-    select.options.add(option);
- }  
- //nos quedamos la respuesta para la corrección.
- respuesta=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
+ //Recuperamos el título y las opciones
+ var tituloSelect=xmlDoc.getElementsByTagName("title")[1].childNodes[0].nodeValue;
+ var optionsSelect = [];
+ var nopt = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length;
+  for (i = 0; i < nopt; i++) { 
+    optionsSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].childNodes[0].nodeValue;
+ }
+ ponerDatosSelect(tituloSelect,optionsSelect);
+ respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].childNodes[0].nodeValue);
 
  //CHECKBOX
  //creamos un elemento h3 para introducirlo como título en el checkboxContainer (div)
@@ -84,16 +81,16 @@ function gestionarXml(dadesXml){
 //implementación de la corrección
 function corregirNumber(){
   var s=formElement.elements[0].value;     
-  if (s==secret) darRespuesta("P1: Exacto!");
+  if (s==numeroSecreto) darRespuesta("P1: Exacto!");
   else {
-    if (s>secret) darRespuesta("P1: Te has pasado");
+    if (s>numeroSecreto) darRespuesta("P1: Te has pasado");
     else darRespuesta("P1: Te has quedado corto");
   }
 }
 
 function corregirSelect(){
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex==respuesta) darRespuesta("P2: Select correcto");
+  if (sel.selectedIndex==respuestaSelect) darRespuesta("P2: Select correcto");
   else darRespuesta("P2: Select incorrecto");
 }
 
@@ -122,6 +119,21 @@ function corregirCheckbox(){
 
 //****************************************************************************************************
 //implementación de la presentación
+
+function ponerDatosSelect(t,opt){
+  var select = document.getElementsByTagName("select")[0];
+  for (i = 0; i < nopt; i++) { 
+    var option = document.createElement("option");
+    option.text = opt[i];
+    option.value=i+1;
+    select.options.add(option);
+ }  
+}
+
+function ponerDatosInputHtml(t){
+ document.getElementById("tituloInput").innerHTML = t;
+}
+
 function darRespuesta(r){
  var resultContainer=document.getElementById('resultContainer');
  var p = document.createElement("p");
@@ -129,6 +141,7 @@ function darRespuesta(r){
  p.appendChild(node);
  resultContainer.appendChild(p);
 }
+
 function borrarCorreccion(){
    var resultContainer=document.getElementById('resultContainer');
    resultContainer.innerHTML = "";
