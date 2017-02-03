@@ -2,6 +2,7 @@ var formElement=null;
 var numeroSecreto=null;
 var respuestaSelect=null;
 var respuestasCheckbox = [];
+var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
 
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
@@ -13,7 +14,8 @@ window.onload = function(){
    borrarCorreccion();
    corregirNumber();
    corregirSelect();
-   corregirCheckbox();  
+   corregirCheckbox();
+   darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
    return false;
  }
  
@@ -70,7 +72,10 @@ function gestionarXml(dadesXml){
 //implementación de la corrección
 function corregirNumber(){
   var s=formElement.elements[0].value;     
-  if (s==numeroSecreto) darRespuestaHtml("P1: Exacto!");
+  if (s==numeroSecreto) {
+   darRespuestaHtml("P1: Exacto!");
+   nota +=1;
+  }
   else {
     if (s>numeroSecreto) darRespuestaHtml("P1: Te has pasado");
     else darRespuestaHtml("P1: Te has quedado corto");
@@ -79,8 +84,11 @@ function corregirNumber(){
 
 function corregirSelect(){
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex==respuestaSelect) darRespuestaHtml("P2: Select correcto");
-  else darRespuestaHtml("P2: Select incorrecto");
+  if (sel.selectedIndex==respuestaSelect) {
+   darRespuestaHtml("P2: Correcto");
+   nota +=1;
+  }
+  else darRespuestaHtml("P2: Incorrecto");
 }
 
 function corregirCheckbox(){
@@ -94,12 +102,13 @@ function corregirCheckbox(){
     }
    } 
   }
-  for (i = 0; i < f.color.length; i++) {
-   
+  for (i = 0; i < f.color.length; i++) {   
    if (f.color[i].checked) {
     if (escorrecta[i]) {
+     nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" correcta");    
     } else {
+     nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    }
@@ -154,4 +163,5 @@ function darRespuestaHtml(r){
 function borrarCorreccion(){
    var resDiv=document.getElementById('resultadosDiv');
    resDiv.innerHTML = "";
+   nota=0.0;
 }
