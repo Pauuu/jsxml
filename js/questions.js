@@ -15,7 +15,7 @@ window.onload = function(){
    corregirNumber();
    corregirSelect();
    corregirCheckbox();
-   darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
+   presentarNota();   
    return false;
  }
  
@@ -158,6 +158,10 @@ function darRespuestaHtml(r){
  var node = document.createTextNode(r);
  p.appendChild(node);
  resDiv.appendChild(p);
+}
+
+function presentarNota(){
+   darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
 }
 
 function borrarCorreccion(){
