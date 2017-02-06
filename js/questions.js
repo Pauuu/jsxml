@@ -38,33 +38,33 @@ function gestionarXml(dadesXml){
  
  //NUMBER
  //Recuperamos el título y la respuesta correcta de Input, guardamos el número secreto
- var tituloInput=xmlDoc.getElementsByTagName("title")[0].innterHTML;
+ var tituloInput=xmlDoc.getElementsByTagName("title")[0].innerHTML;
  ponerDatosInputHtml(tituloInput);
- numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].innterHTML);
+ numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].innerHTML);
  
  //SELECT
  //Recuperamos el título y las opciones, guardamos la respuesta correcta
- var tituloSelect=xmlDoc.getElementsByTagName("title")[1].innterHTML;
+ var tituloSelect=xmlDoc.getElementsByTagName("title")[1].innerHTML;
  var opcionesSelect = [];
  var nopt = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length;
   for (i = 0; i < nopt; i++) { 
-    opcionesSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].innterHTML;
+    opcionesSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].innerHTML;
  }
  ponerDatosSelectHtml(tituloSelect,opcionesSelect);
- respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].innterHTML);
+ respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].innerHTML);
 
  //CHECKBOX
  //Recuperamos el título y las opciones, guardamos las respuestas correctas
- var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].innterHTML;
+ var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].innerHTML;
  var opcionesCheckbox = [];
  var nopt = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
  for (i = 0; i < nopt; i++) { 
-    opcionesCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].innterHTML;
+    opcionesCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].innerHTML;
  }  
  ponerDatosCheckboxHtml(tituloCheckbox,opcionesCheckbox);
  var nres = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
-  respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].innterHTML;
+  respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].innerHTML;
  }
 }
 
