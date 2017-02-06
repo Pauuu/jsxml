@@ -1,6 +1,6 @@
 # jsxml
 
-v.6 varias simplificaciones, cambio de "childNodes[0].nodeValue" al equivalente "innterHTML",
+v.6 varias simplificaciones, cambio de "childNodes[0].nodeValue" al equivalente "innerHTML",
 
 v.5 Se ha incluido el cálculo de la nota final y su presentación.
 
