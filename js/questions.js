@@ -92,7 +92,7 @@ function corregirSelect(){
 }
 
 function corregirCheckbox(){
-  var f=document.getElementById('myform');
+  var f=formElement;
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {
    if (f.color[i].checked) {
