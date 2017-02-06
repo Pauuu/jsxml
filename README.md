@@ -1,5 +1,7 @@
 # jsxml
 
+v.6 varias simplificaciones, cambio de "childNodes[0].nodeValue" al equivalente "innerHTML".
+
 v.5 Se ha incluido el cálculo de la nota final y su presentación.
 
 v.4 Se ha dividido la carga de datos dos partes, la recepción y la presentación. Se han modificado los nombres de las variables para ser más descriptivas.
