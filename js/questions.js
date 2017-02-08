@@ -134,9 +134,7 @@ function ponerDatosSelectHtml(t,opt){
 
 function ponerDatosCheckboxHtml(t,opt){
  var checkboxContainer=document.getElementById('checkboxDiv');
- var h3 = document.createElement("h3");
- h3.innerHTML = t;
- checkboxContainer.appendChild(h3); 
+ document.getElementById('tituloCheckbox').innerHTML = t;
  for (i = 0; i < opt.length; i++) { 
     var input = document.createElement("input");
     var label = document.createElement("label");
