@@ -94,7 +94,7 @@ function corregirSelect(){
 function corregirCheckbox(){
   var f=formElement;
   var escorrecta = [];
-  for (i = 0; i < f.color.length; i++) {
+  for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color[i].checked) {
     escorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox.length; j++) {
