@@ -1,5 +1,7 @@
 # jsxml
 
+v.7 añadido título html (h3 tituloCheckbox)
+
 v.6 varias simplificaciones, cambio de "childNodes[0].nodeValue" al equivalente "innerHTML".
 
 v.5 Se ha incluido el cálculo de la nota final y su presentación.
