@@ -70,6 +70,7 @@ function gestionarXml(dadesXml){
 
 //****************************************************************************************************
 //implementación de la corrección
+
 function corregirNumber(){
   //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
   //en este ejemplo hace una comparación de números enteros
@@ -96,8 +97,9 @@ function corregirSelect(){
   else darRespuestaHtml("P2: Incorrecto");
 }
 
+//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
 function corregirCheckbox(){
-  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array
+  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
   var f=formElement;
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
@@ -108,6 +110,7 @@ function corregirCheckbox(){
     }
    } 
   }
+  //Por cada opción que está chequedada, si es correcta sumamos y ponemos mensaje, si no es correcta restamos y ponemos mensaje.
   for (i = 0; i < f.color.length; i++) {   
    if (f.color[i].checked) {
     if (escorrecta[i]) {
