@@ -70,7 +70,10 @@ function gestionarXml(dadesXml){
 
 //****************************************************************************************************
 //implementación de la corrección
+
 function corregirNumber(){
+  //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
+  //en este ejemplo hace una comparación de números enteros
   var s=formElement.elements[0].value;     
   if (s==numeroSecreto) {
    darRespuestaHtml("P1: Exacto!");
@@ -83,6 +86,9 @@ function corregirNumber(){
 }
 
 function corregirSelect(){
+  //Compara el índice seleccionado con el valor del íncide que hay en el xml (<answer>2</answer>)
+  //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
+  //luego comparar ese value con el value guardado en answer
   var sel = formElement.elements[1];  
   if (sel.selectedIndex==respuestaSelect) {
    darRespuestaHtml("P2: Correcto");
@@ -91,7 +97,9 @@ function corregirSelect(){
   else darRespuestaHtml("P2: Incorrecto");
 }
 
+//Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
 function corregirCheckbox(){
+  //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
   var f=formElement;
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
@@ -102,6 +110,7 @@ function corregirCheckbox(){
     }
    } 
   }
+  //Por cada opción que está chequedada, si es correcta sumamos y ponemos mensaje, si no es correcta restamos y ponemos mensaje.
   for (i = 0; i < f.color.length; i++) {   
    if (f.color[i].checked) {
     if (escorrecta[i]) {

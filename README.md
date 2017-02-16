@@ -1,5 +1,7 @@
 # jsxml
 
+v.8 se han comentado las funciones de corrección
+
 v.7 añadido título html (h3 tituloCheckbox)
 
 v.6 varias simplificaciones, cambio de "childNodes[0].nodeValue" al equivalente "innerHTML".
