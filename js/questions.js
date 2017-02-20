@@ -45,12 +45,9 @@ function gestionarXml(dadesXml){
  //SELECT
  //Recuperamos el título y las opciones, guardamos la respuesta correcta
  var tituloSelect=xmlDoc.getElementsByTagName("title")[1].innerHTML;
- var opcionesSelect = [];
- var nopt = xmlDoc.getElementById("profe_002").getElementsByTagName('option').length;
-  for (i = 0; i < nopt; i++) { 
-    opcionesSelect[i] = xmlDoc.getElementById("profe_002").getElementsByTagName('option')[i].innerHTML;
- }
- ponerDatosSelectHtml(tituloSelect,opcionesSelect);
+ var xpath="/questions/question[@id='profe_002']/option";
+ var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
+ ponerDatosSelectHtml(tituloSelect,nodesSelect);
  respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].innerHTML);
 
  //CHECKBOX
@@ -130,15 +127,19 @@ function ponerDatosInputHtml(t){
  document.getElementById("tituloInput").innerHTML = t;
 }
 
-function ponerDatosSelectHtml(t,opt){
+function ponerDatosSelectHtml(t,nodes){
   document.getElementById("tituloSelect").innerHTML=t;
   var select = document.getElementsByTagName("select")[0];
-  for (i = 0; i < opt.length; i++) { 
-    var option = document.createElement("option");
-    option.text = opt[i];
-    option.value=i+1;
-    select.options.add(option);
- }  
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var option = document.createElement("option");
+   option.text = result.innerHTML;
+   option.value=i+1; i++;
+   select.options.add(option);
+   select.appendChild(document.createElement("br"));   
+   result = nodes.iterateNext();
+  }  
 }
 
 function ponerDatosCheckboxHtml(t,opt){
