@@ -137,7 +137,6 @@ function ponerDatosSelectHtml(t,nodes){
    option.text = result.innerHTML;
    option.value=i+1; i++;
    select.options.add(option);
-   select.appendChild(document.createElement("br"));   
    result = nodes.iterateNext();
   }  
 }
