@@ -17,7 +17,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <td><xsl:value-of select="title"/></td>
       <td>
         <xsl:for-each select="questions/question/answer">
-         <xsl:value-of select="answer"/><br/>
+         <xsl:value-of select="@value"/><br/>
         </xsl:for-each>
       </td>
     </tr>
