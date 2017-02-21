@@ -8,14 +8,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <body>
   <h2>Questions</h2>
   <table border="1">
-    <tr bgcolor="#9acd32">
+    <tr bgcolor="#cdd8f6">
       <th>Title</th>
       <th>Answer</th>
     </tr>
     <xsl:for-each select="questions/question">
     <tr>
       <td><xsl:value-of select="title"/></td>
-      <td><xsl:value-of select="answer"/></td>
+      <td>
+        <xsl:for-each select="questions/question/answer">
+         <xsl:value-of select="answer"/><br/>
+        </xsl:for-each>
+      </td>
     </tr>
     </xsl:for-each>
   </table>
