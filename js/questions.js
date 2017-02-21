@@ -31,11 +31,7 @@ window.onload = function(){
 //**************************************************************************************************** 
 //para leer documentos externos
 function loadXMLDoc(filename) {
-        if (window.ActiveXObject) {
-             xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } else {
-             xhttp = new XMLHttpRequest();
-        }
+        xhttp = new XMLHttpRequest();        
         xhttp.open("GET", filename, true);
         xhttp.send("");
         return xhttp.responseXML;
@@ -45,7 +41,6 @@ function loadXMLDoc(filename) {
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
- xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
  
  //NUMBER
  //Recuperamos el título y la respuesta correcta de Input, guardamos el número secreto
