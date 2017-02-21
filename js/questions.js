@@ -12,10 +12,12 @@ window.onload = function(){
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
    inicializar();
-   corregirNumber();
-   corregirSelect();
-   corregirCheckbox();
-   presentarNota();   
+   if (comprobar()){
+    corregirNumber();
+    corregirSelect();
+    corregirCheckbox();
+    presentarNota();
+   }
    return false;
  }
  
@@ -90,7 +92,7 @@ function corregirSelect(){
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex==respuestaSelect) {
+  if (sel.selectedIndex-1==respuestaSelect) {
    darRespuestaHtml("P2: Correcto");
    nota +=1;
   }
@@ -169,4 +171,17 @@ function presentarNota(){
 function inicializar(){
    document.getElementById('resultadosDiv').innerHTML = "";
    nota=0.0;
+}
+
+//Comprobar que se han introducido datos en el formulario
+function comprobar(){
+   if (formElement.elements[0].value=="") {
+    formElement.elements[0].focus();
+    alert("Escribe un número");
+    return false;
+   } else if (formElement.elements[1].selectedIndex==0) {
+    formElement.elements[1].focus();
+    alert("Selecciona una opción");
+    return false;
+   } else  return true;
 }
