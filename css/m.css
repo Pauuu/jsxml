@@ -1,4 +1,4 @@
-body{width:100%;padding-left:2%;padding-right:2%}
+.container{width:100%;padding-left:2%;padding-right:2%}
 body,input,select{font-size:2vw}
 h3{font-size:3vw}
 input,select{width:80%}
