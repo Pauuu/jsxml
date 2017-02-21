@@ -173,7 +173,7 @@ function presentarNota(){
    darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
    var oSerializer = new XMLSerializer();
    var myWindow = window.open();
-   myWindow.document.write ("<?xml version="1.0"?>"+oSerializer.serializeToString(xmlDoc));
+   myWindow.document.write ("<?xml version=\"1.0\"?>"+oSerializer.serializeToString(xmlDoc));
 }
 
 function inicializar(){
