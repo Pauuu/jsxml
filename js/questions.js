@@ -149,7 +149,8 @@ function ponerDatosCheckboxHtml(t,nodes){
   while (result) {
    var input = document.createElement("input");
    var label = document.createElement("label");   
-   label.innerHTML = result.innerHTML;
+   label.innerHTML = result.innerHTML
+   label.setAttribute("for", "color_"+i);
    input.type="checkbox";
    input.name="color";
    input.id="color_"+i; i++;
