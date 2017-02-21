@@ -108,11 +108,7 @@ function corregirCheckbox(){
     for (j = 0; j < respuestasCheckbox.length; j++) {
      if (i==respuestasCheckbox[j]) escorrecta[i]=true;
     }
-   } 
-  }
-  //Por cada opción que está chequedada, si es correcta sumamos y ponemos mensaje, si no es correcta restamos y ponemos mensaje.
-  for (i = 0; i < f.color.length; i++) {   
-   if (f.color[i].checked) {
+    //si es correcta sumamos y ponemos mensaje, si no es correcta restamos y ponemos mensaje.
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" correcta");    
@@ -120,7 +116,7 @@ function corregirCheckbox(){
      nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
      darRespuestaHtml("P3: "+i+" incorrecta");
     }   
-   }
+   } 
   }
 }
 
