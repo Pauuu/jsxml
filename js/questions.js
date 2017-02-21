@@ -186,5 +186,6 @@ function comprobar(){
    } else if (formElement.elements[1].selectedIndex==0) {
     formElement.elements[1].focus();
     alert("Selecciona una opción");
+    return false;
    } else  return true;
 }
