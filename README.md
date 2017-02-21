@@ -1,8 +1,10 @@
 # jsxml
 
-v.9 se ha añadido css responsive y adaptativo (mínimo) para tomar como referencia
+v.10 modificada función de corregirCheckbox: en un bucle, añadida funcion comprobar() para comprobar si hemos introducido datos
 
-v.8 se han comentado las funciones de corrección
+v.9 añadido css responsive y adaptativo (mínimo) para tomar como referencia
+
+v.8 comentado las funciones de corrección
 
 v.7 añadido título html (h3 tituloCheckbox)
 
