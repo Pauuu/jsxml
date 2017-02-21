@@ -171,14 +171,14 @@ function darRespuestaHtml(r){
 
 function presentarNota(){
    darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
+   var oSerializer = new XMLSerializer();
+   var myWindow = window.open();
+   myWindow.document.write ("<?xml version="1.0"?>"+oSerializer.serializeToString(xmlDoc));
 }
 
 function inicializar(){
    document.getElementById('resultadosDiv').innerHTML = "";
-   nota=0.0;
-   var oSerializer = new XMLSerializer();
-   var myWindow = window.open();
-   myWindow.document.write ("<?xml version="1.0"?>"+oSerializer.serializeToString(xmlDoc));
+   nota=0.0;  
 }
 
 //Comprobar que se han introducido datos en el formulario
