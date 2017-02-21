@@ -22,26 +22,35 @@ window.onload = function(){
    }
    return false;
  }
- 
  //LEER XML de xml/preguntas.xml
- xmlDoc=loadXMLDoc("xml/preguntas.xml");
- xslDoc=loadXMLDoc("xml/transform.xsl");
+ var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+   gestionarXml(this);
+  }
+ };
+ xhttp.open("GET", "xml/preguntas.xml", true);
+ xhttp.send();
+ 
+  //LEER XSL de xml/transform.xml
+ var xhttp = new XMLHttpRequest();
+ xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+   xslDoc=this.responseXML;
+  }
+ };
+ xhttp.open("GET", "xml/transform.xml", true);
+ xhttp.send();
+ 
 }
 
-//**************************************************************************************************** 
-//para leer documentos externos
-function loadXMLDoc(filename) {
-        xhttp = new XMLHttpRequest();        
-        xhttp.open("GET", filename, true);
-        xhttp.send("");
-        return xhttp.responseXML;
-     }
 
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
- 
+ xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
+
  //NUMBER
  //Recuperamos el título y la respuesta correcta de Input, guardamos el número secreto
  var tituloInput=xmlDoc.getElementsByTagName("title")[0].innerHTML;
