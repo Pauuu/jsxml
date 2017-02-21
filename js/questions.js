@@ -152,6 +152,7 @@ function ponerDatosCheckboxHtml(t,opt){
     input.id="color_"+i;;    
     checkboxContainer.appendChild(input);
     checkboxContainer.appendChild(label);
+    checkboxContainer.appendChild(document.createElement("br"));
  }  
 }
 
