@@ -177,7 +177,8 @@ function inicializar(){
    document.getElementById('resultadosDiv').innerHTML = "";
    nota=0.0;
    var oSerializer = new XMLSerializer();
-   document.write (oSerializer.serializeToString(xmlDoc));
+   var myWindow = window.open();
+   myWindow.document.write ("<?xml version="1.0"?>"+oSerializer.serializeToString(xmlDoc));
 }
 
 //Comprobar que se han introducido datos en el formulario
