@@ -1,5 +1,7 @@
 # jsxml
 
+v.11 modificada la lectura de los datos de tipo select y checkbox para realizarla con XPath. Modificadas las funciones ponerDatosSelectHtml y ponerDatosCheckboxHtml para leer los nodos pasados y poner los datos en el html.
+
 v.10 modificada función de corregirCheckbox: en un bucle, añadida funcion comprobar() para comprobar si hemos introducido datos
 
 v.9 añadido css responsive y adaptativo (mínimo) para tomar como referencia
