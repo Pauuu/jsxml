@@ -12,10 +12,12 @@ window.onload = function(){
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
    inicializar();
-   corregirNumber();
-   corregirSelect();
-   corregirCheckbox();
-   presentarNota();   
+   if (comprobar()){
+    corregirNumber();
+    corregirSelect();
+    corregirCheckbox();
+    presentarNota();
+   }
    return false;
  }
  
@@ -173,4 +175,13 @@ function presentarNota(){
 function inicializar(){
    document.getElementById('resultadosDiv').innerHTML = "";
    nota=0.0;
+}
+
+//Comprobar que se han introducido datos en el formulario
+function comprobar(){
+   if (formElement.elements[0].value=="") {
+    formElement.elements[0].focus();
+    alert("Debes escribir algo");
+    return false;
+   } else return true;
 }
