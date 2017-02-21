@@ -1,5 +1,7 @@
 # jsxml
 
+v.9 se ha añadido css responsive y adaptativo (mínimo) para tomar como referencia
+
 v.8 se han comentado las funciones de corrección
 
 v.7 añadido título html (h3 tituloCheckbox)
