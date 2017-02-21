@@ -39,7 +39,7 @@ window.onload = function(){
    xslDoc=this.responseXML;
   }
  };
- xhttp2.open("GET", "xml/transform.xml", true);
+ xhttp2.open("GET", "xml/transform.xsl", true);
  xhttp2.send();
  
 }
