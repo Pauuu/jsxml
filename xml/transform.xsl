@@ -17,13 +17,14 @@
       <td>
        <xsl:for-each select="option">
         <xsl:variable name="i" select="position()"/> 
-        <xsl:value-of select="text()"/>
-        <xsl:for-each select="answer">
+        <xsl:value-of select="$i"/>
+         <xsl:for-each select="answer">
+            <xsl:value-of select="text()"/>
             <xsl:variable name="t" select="text()"/>
             <xsl:if test="$i=$t">
               Correcto
             </xsl:if>      
-         </xsl:for-each>
+          </xsl:for-each>
          <br/>
        </xsl:for-each>
       </td>
