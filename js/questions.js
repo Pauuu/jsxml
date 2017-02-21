@@ -33,14 +33,14 @@ window.onload = function(){
  xhttp.send();
  
   //LEER XSL de xml/transform.xml
- var xhttp = new XMLHttpRequest();
- xhttp.onreadystatechange = function() {
+ var xhttp2 = new XMLHttpRequest();
+ xhttp2.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
    xslDoc=this.responseXML;
   }
  };
- xhttp.open("GET", "xml/transform.xml", true);
- xhttp.send();
+ xhttp2.open("GET", "xml/transform.xml", true);
+ xhttp2.send();
  
 }
 
