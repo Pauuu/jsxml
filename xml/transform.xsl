@@ -17,12 +17,12 @@
       <td><xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="option">
-        <xsl:value-of select="position()"/> <xsl:value-of select="text()"/><br/>
+        <xsl:value-of select="position()"/>: <xsl:value-of select="text()"/><br/>
        </xsl:for-each>
       </td>
       <td>
        <xsl:for-each select="answer">
-        <xsl:value-of select="text()"/>
+        <xsl:value-of select="text()"/><br/>
        </xsl:for-each>       
       </td>
     </tr>
