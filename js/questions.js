@@ -36,7 +36,7 @@ function loadXMLDoc(filename) {
         } else {
              xhttp = new XMLHttpRequest();
         }
-        xhttp.open("GET", filename, false);
+        xhttp.open("GET", filename, true);
         xhttp.send("");
         return xhttp.responseXML;
      }
