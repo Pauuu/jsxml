@@ -3,6 +3,7 @@ var numeroSecreto=null;
 var respuestaSelect=null;
 var respuestasCheckbox = [];
 var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
+var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
 
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
@@ -36,7 +37,7 @@ window.onload = function(){
 // Recuperamos los datos del fichero XML xml/preguntas.xml
 // xmlDOC es el documento leido XML. 
 function gestionarXml(dadesXml){
- var xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
+ xmlDoc = dadesXml.responseXML; //Parse XML to xmlDoc
  
  //NUMBER
  //Recuperamos el título y la respuesta correcta de Input, guardamos el número secreto
@@ -175,6 +176,8 @@ function presentarNota(){
 function inicializar(){
    document.getElementById('resultadosDiv').innerHTML = "";
    nota=0.0;
+   var oSerializer = new XMLSerializer();
+   document.write (oSerializer.serializeToString(xmlDoc));
 }
 
 //Comprobar que se han introducido datos en el formulario
