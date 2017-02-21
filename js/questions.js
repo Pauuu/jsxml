@@ -92,7 +92,7 @@ function corregirSelect(){
   //para implementarlo con type radio, usar value para enumerar las opciones <input type='radio' value='1'>...
   //luego comparar ese value con el value guardado en answer
   var sel = formElement.elements[1];  
-  if (sel.selectedIndex-1==respuestaSelect) {
+  if (sel.selectedIndex-1==respuestaSelect) { //-1 porque hemos puesto una opción por defecto en el select que ocupa la posición 0
    darRespuestaHtml("P2: Correcto");
    nota +=1;
   }
