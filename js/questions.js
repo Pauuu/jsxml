@@ -4,6 +4,7 @@ var respuestaSelect=null;
 var respuestasCheckbox = [];
 var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
 var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
+var xslDoc = null;
 
 //**************************************************************************************************** 
 //Después de cargar la página (onload) se definen los eventos sobre los elementos entre otras acciones.
@@ -23,15 +24,22 @@ window.onload = function(){
  }
  
  //LEER XML de xml/preguntas.xml
- var xhttp = new XMLHttpRequest();
- xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-   gestionarXml(this);
-  }
- };
- xhttp.open("GET", "xml/preguntas.xml", true);
- xhttp.send();
+ xmlDoc=loadXMLDoc("xml/preguntas.xml");
+ xslDoc=loadXMLDoc("xml/transform.xsl");
 }
+
+//**************************************************************************************************** 
+//para leer documentos externos
+function loadXMLDoc(filename) {
+        if (window.ActiveXObject) {
+             xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } else {
+             xhttp = new XMLHttpRequest();
+        }
+        xhttp.open("GET", filename, false);
+        xhttp.send("");
+        return xhttp.responseXML;
+     }
 
 //****************************************************************************************************
 // Recuperamos los datos del fichero XML xml/preguntas.xml
@@ -171,9 +179,13 @@ function darRespuestaHtml(r){
 
 function presentarNota(){
    darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
-   var oSerializer = new XMLSerializer();
-   var myWindow = window.open();
-   myWindow.document.write (oSerializer.serializeToString(xmlDoc));
+   //Código transformación xslt con xmlDoc y xslDoc
+   if (document.implementation && document.implementation.createDocument) {
+        xsltProcessor = new XSLTProcessor();
+        xsltProcessor.importStylesheet(xslDoc);
+        resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
+        document.getElementById('resultadosDiv').appendChild(resultDocument);
+     }
 }
 
 function inicializar(){
