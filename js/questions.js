@@ -43,22 +43,22 @@ function gestionarXml(dadesXml){
  numeroSecreto=parseInt(xmlDoc.getElementsByTagName("answer")[0].innerHTML);
  
  //SELECT
- //Recuperamos el título y las opciones, guardamos la respuesta correcta
+ //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect) 
  var tituloSelect=xmlDoc.getElementsByTagName("title")[1].innerHTML;
  var xpath="/questions/question[@id='profe_002']/option";
  var nodesSelect = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null);
  ponerDatosSelectHtml(tituloSelect,nodesSelect);
+ //guardamos la respuesta correcta
  respuestaSelect=parseInt(xmlDoc.getElementsByTagName("answer")[1].innerHTML);
 
  //CHECKBOX
- //Recuperamos el título y las opciones, guardamos las respuestas correctas
+ //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect)
  var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].innerHTML;
  var opcionesCheckbox = [];
- var nopt = xmlDoc.getElementById("profe_003").getElementsByTagName('option').length;
- for (i = 0; i < nopt; i++) { 
-    opcionesCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName('option')[i].innerHTML;
- }  
- ponerDatosCheckboxHtml(tituloCheckbox,opcionesCheckbox);
+ var xpath="/questions/question[@id='profe_003']/option";
+ var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
+ ponerDatosCheckboxHtml(tituloCheckbox,nodesCheckbox);
+ //guardamos las respuestas correctas
  var nres = xmlDoc.getElementById("profe_003").getElementsByTagName('answer').length;
  for (i = 0; i < nres; i++) { 
   respuestasCheckbox[i]=xmlDoc.getElementById("profe_003").getElementsByTagName("answer")[i].innerHTML;
@@ -141,20 +141,23 @@ function ponerDatosSelectHtml(t,nodes){
   }  
 }
 
-function ponerDatosCheckboxHtml(t,opt){
+function ponerDatosCheckboxHtml(t,nodes){
  var checkboxContainer=document.getElementById('checkboxDiv');
  document.getElementById('tituloCheckbox').innerHTML = t;
- for (i = 0; i < opt.length; i++) { 
-    var input = document.createElement("input");
-    var label = document.createElement("label");
-    label.innerHTML=opt[i];
-    label.setAttribute("for", "color_"+i);
-    input.type="checkbox";
-    input.name="color";
-    input.id="color_"+i;;    
-    checkboxContainer.appendChild(input);
-    checkboxContainer.appendChild(label);
- }  
+  var result = nodes.iterateNext();
+  i=0;
+  while (result) {
+   var input = document.createElement("input");
+   var label = document.createElement("label");   
+   label.innerHTML = result.innerHTML;
+   input.type="checkbox";
+   input.name="color";
+   input.id="color_"+i; i++;
+   checkboxContainer.appendChild(input);
+   checkboxContainer.appendChild(label);
+   checkboxContainer.appendChild(document.createElement("br"));
+   result = nodes.iterateNext();
+  }    
 }
 
 //****************************************************************************************************
