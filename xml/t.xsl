@@ -5,7 +5,7 @@
 <xsl:template match="/">
   <html>
   <head>
-  <link src="css/t.css"/>
+  <link rel="stylesheet" type="text/css" href="css/t.css"/>
   </head>
   <body>
   <h2>Questions</h2>
