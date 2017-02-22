@@ -9,11 +9,11 @@
 table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
 td,tr,th{border:1px solid;padding:2px}
-span{color:green}
+span{color:green;padding-left:5px}
 </style>
 </head>
 <body>
-  <h2>Questions</h2>
+  <h2>Corrección</h2>
   <table>
     <tr>
       <th>Title</th>
@@ -26,11 +26,11 @@ span{color:green}
       <td>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()-1"/>
-        O<xsl:value-of select="$optposition"/>: <xsl:value-of select="text()"/>
+        O<xsl:value-of select="$optposition+1"/>: <xsl:value-of select="text()"/>
          <xsl:for-each select="../answer">
-           <xsl:variable name="correctanswer" select="text()"/>
+          <xsl:variable name="correctanswer" select="text()"/>
           <xsl:if test="$optposition=$correctanswer">
-            <span>This option is correct.</span>
+            <span>Opción correcta</span>
           </xsl:if>
          </xsl:for-each><br/>
        </xsl:for-each>
