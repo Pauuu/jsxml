@@ -89,7 +89,6 @@ function corregirNumber(){
   if (s==numeroSecreto) {
    nota +=1;
   }
-  if (xmlDoc.getElementById("profe_001").getElementsByTagName("useranswer")!==null) xmlDoc.getElementById("profe_001").getElementsByTagName("useranswer")=null;
   var useranswer = xmlDoc.createElement("useranswer");   
   useranswer.innerHTML = s;
   xmlDoc.getElementById("profe_001").appendChild(useranswer);
@@ -103,7 +102,6 @@ function corregirSelect(){
   if (sel.selectedIndex-1==respuestaSelect) { //-1 porque hemos puesto una opción por defecto en el select que ocupa la posición 0
    nota +=1;
   }
-  if (xmlDoc.getElementById("profe_002").getElementsByTagName("useranswer")!==null) xmlDoc.getElementById("profe_002").getElementsByTagName("useranswer")=null;
   var useranswer = xmlDoc.createElement("useranswer");   
   useranswer.innerHTML = sel.selectedIndex;
   xmlDoc.getElementById("profe_002").appendChild(useranswer);
@@ -114,7 +112,6 @@ function corregirCheckbox(){
   //Para cada opción mira si está checkeada, si está checkeada mira si es correcta y lo guarda en un array escorrecta[]
   var f=formElement;
   var escorrecta = [];
-  if (xmlDoc.getElementById("profe_003").getElementsByTagName("useranswer")!==null) xmlDoc.getElementById("profe_003").getElementsByTagName("useranswer")=null;
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color[i].checked) {
     var useranswer = xmlDoc.createElement("useranswer");   
@@ -192,6 +189,12 @@ function presentarNota(){
         document.getElementById('resultadosDiv').appendChild(resultDocument);
    }
    darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
+   //bloquear formulario (recargar para volver a empezar)
+   var f=formElement;
+   var e = f.elements;
+   for (var i = 0, len = e.length; i < len; ++i) {
+    e[i].readOnly = true;
+   }
 }
 
 function inicializar(){
