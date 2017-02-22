@@ -1,5 +1,7 @@
 # jsxml
 
+v.14 modificados los métodos de corregir, para en lugar de sacar texto, añadir un elmento (etiqueta useranswer) a xmlDoc que luego presentaremos con una xslt. Se ha añadido código para que espués de presentar la nota se bloqueen las preguntas.
+
 v.13 js lee dos ficheros, questions.xml y questions.xsl, que se usan para presentar la corrección mediante una transformación xslt en la función presentarNota() (ejemplo de xslt en el cliente, con javascript)
 
 v.12 modificado preguntas.xml que enlaza a transform.xsl, al visualizar preguntas.xml se hace una xslt y se muestra con formato (a modo de ejemplo de xslt simple)
