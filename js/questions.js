@@ -89,7 +89,7 @@ function corregirNumber(){
   if (s==numeroSecreto) {
    nota +=1;
   }
-  var useranswer = document.createElement("useranswer");   
+  var useranswer = xmlDoc.createElement("useranswer");   
   useranswer.innerHTML = s;
   xmlDoc.getElementById("profe_001").appendChild(useranswer);
 }
@@ -102,7 +102,7 @@ function corregirSelect(){
   if (sel.selectedIndex-1==respuestaSelect) { //-1 porque hemos puesto una opción por defecto en el select que ocupa la posición 0
    nota +=1;
   }
-  var useranswer = document.createElement("useranswer");   
+  var useranswer = xmlDoc.createElement("useranswer");   
   useranswer.innerHTML = sel.selectedIndex;
   xmlDoc.getElementById("profe_002").appendChild(useranswer);
 }
@@ -114,7 +114,7 @@ function corregirCheckbox(){
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color[i].checked) {
-    var useranswer = document.createElement("useranswer");   
+    var useranswer = xmlDoc.createElement("useranswer");   
     useranswer.innerHTML = i;
     xmlDoc.getElementById("profe_003").appendChild(useranswer);
     escorrecta[i]=false;     
