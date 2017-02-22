@@ -8,7 +8,7 @@
 <style rel="stylesheet" type="text/css">
 table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
-td,tr,th{border:0px;padding:2px}
+td,tr,th{border:1px solid;padding:2px}
 </style>
 </head>
 <body>
@@ -26,12 +26,10 @@ td,tr,th{border:0px;padding:2px}
       <td>
        <xsl:for-each select="option">
         O<xsl:value-of select="position()"/>: <xsl:value-of select="text()"/><br/>
+         <xsl:for-each select="../answer">
+          A:<xsl:value-of select="text()"/><br/>
+         </xsl:for-each>
        </xsl:for-each>
-      </td>
-      <td>
-       <xsl:for-each select="answer">
-        <xsl:value-of select="text()"/><br/>
-       </xsl:for-each>       
       </td>
       <td>
        <xsl:for-each select="useranswer">
