@@ -6,9 +6,9 @@
 <html>
 <head>
 <style rel="stylesheet" type="text/css">
-table{width:100%;border:1px solid;vertical-align:top}
+table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
-td,tr,th{border:1px solid;padding:2px}
+td,tr,th{border:1px solid;padding:2px;vertical-align:top}
 span{color:green;padding-left:5px}
 </style>
 </head>
@@ -25,9 +25,10 @@ span{color:green;padding-left:5px}
       <td><xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="answer">
-          <xsl:variable name="questiontype" select="../type"/>
-          <xsl:variable name="texttype" select="text"/>
-          <xsl:if test="$questiontype=$texttype">
+          <xsl:for-each select="../type">
+            <xsl:variable name="questiontype" select="text()"/>
+          </xsl:for-each>          
+          <xsl:if test="$questiontype='number'">
             <span><xsl:value-of select="text()"/></span>
           </xsl:if>
        </xsl:for-each>
