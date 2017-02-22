@@ -4,12 +4,14 @@
 
 <xsl:template match="/">
 <html>
-<body>
+<head>
 <style rel="stylesheet" type="text/css">
 table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
 td,tr,th{border:0px;padding:2px}
 </style>
+</head>
+<body>
   <h2>Questions</h2>
   <table>
     <tr>
