@@ -84,17 +84,14 @@ function gestionarXml(dadesXml){
 //implementación de la corrección
 
 function corregirNumber(){
-  //Vosotros debéis comparar el texto escrito con el texto que hay en el xml
-  //en este ejemplo hace una comparación de números enteros
+  //Ponemos lo que hemos puesto como elemento añadido al documento xml (appendChild)
   var s=formElement.elements[0].value;     
   if (s==numeroSecreto) {
-   darRespuestaHtml("P1: Exacto!");
    nota +=1;
   }
-  else {
-    if (s>numeroSecreto) darRespuestaHtml("P1: Te has pasado");
-    else darRespuestaHtml("P1: Te has quedado corto");
-  }
+  var useranswer = document.createElement("useranswer");   
+  useranswer.innerHTML = s;
+  xmlDoc.getElementById("profe_001").appendChild(useranswer);
 }
 
 function corregirSelect(){
@@ -103,10 +100,11 @@ function corregirSelect(){
   //luego comparar ese value con el value guardado en answer
   var sel = formElement.elements[1];  
   if (sel.selectedIndex-1==respuestaSelect) { //-1 porque hemos puesto una opción por defecto en el select que ocupa la posición 0
-   darRespuestaHtml("P2: Correcto");
    nota +=1;
   }
-  else darRespuestaHtml("P2: Incorrecto");
+  var useranswer = document.createElement("useranswer");   
+  useranswer.innerHTML = sel.selectedIndex;
+  xmlDoc.getElementById("profe_002").appendChild(useranswer);
 }
 
 //Si necesitáis ayuda para hacer un corregirRadio() decirlo, lo ideal es que a podáis construirla modificando corregirCheckbox
@@ -116,6 +114,9 @@ function corregirCheckbox(){
   var escorrecta = [];
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color[i].checked) {
+    var useranswer = document.createElement("useranswer");   
+    useranswer.innerHTML = i;
+    xmlDoc.getElementById("profe_003").appendChild(useranswer);
     escorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox.length; j++) {
      if (i==respuestasCheckbox[j]) escorrecta[i]=true;
@@ -123,10 +124,8 @@ function corregirCheckbox(){
     //si es correcta sumamos y ponemos mensaje, si no es correcta restamos y ponemos mensaje.
     if (escorrecta[i]) {
      nota +=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" correcta");    
     } else {
      nota -=1.0/respuestasCheckbox.length;  //dividido por el número de respuestas correctas   
-     darRespuestaHtml("P3: "+i+" incorrecta");
     }   
    } 
   }
@@ -181,15 +180,15 @@ function darRespuestaHtml(r){
  document.getElementById('resultadosDiv').appendChild(p);
 }
 
-function presentarNota(){
-   darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
+function presentarNota(){   
    //Código transformación xslt con xmlDoc y xslDoc
    if (document.implementation && document.implementation.createDocument) {
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xslDoc);
         resultDocument = xsltProcessor.transformToFragment(xmlDoc, document);
         document.getElementById('resultadosDiv').appendChild(resultDocument);
-     }
+   }
+   darRespuestaHtml("Nota: "+nota+" puntos sobre 3");
 }
 
 function inicializar(){
