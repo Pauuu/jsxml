@@ -47,10 +47,17 @@ span{color:green;padding-left:5px}
         <xsl:variable name="useranswers" select="text()-1"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
-          <xsl:variable name="correctanswer" select="text()"/>
-          <xsl:if test="$useranswers=$correctanswer">
-            <span>&#x2713;</span>
-          </xsl:if>
+          <xsl:choose>
+           <xsl:when test="../type = 'text'">
+            <span><xsl:value-of select="$useranswers+1"/></span>
+           </xsl:when>
+           <xsl:otherwise>
+            <xsl:variable name="correctanswer" select="text()"/>
+             <xsl:if test="$useranswers=$correctanswer">
+              <span>&#x2713;</span>
+             </xsl:if>
+           </xsl:otherwise>
+          </xsl:choose>
          </xsl:for-each><br/><br/>
        </xsl:for-each>       
      </td>
