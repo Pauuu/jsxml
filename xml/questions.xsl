@@ -6,7 +6,7 @@
 <html>
 <head>
 <style rel="stylesheet" type="text/css">
-table{width:100%;border:1px solid}
+table{width:100%;border:1px solid;vertical-align:top}
 th{background-color:#cdd8f6}
 td,tr,th{border:1px solid;padding:2px}
 span{color:green;padding-left:5px}
@@ -22,11 +22,11 @@ span{color:green;padding-left:5px}
     </tr>
     <xsl:for-each select="questions/question">      
     <tr>
-      <td>P<xsl:value-of select="position()"/>: <xsl:value-of select="title"/></td>
+      <td><xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()-1"/>
-        O<xsl:value-of select="$optposition+1"/>: <xsl:value-of select="text()"/>
+        O<xsl:value-of select="$optposition+1"/>:<br/><xsl:value-of select="text()"/>
          <xsl:for-each select="../answer">
           <xsl:variable name="correctanswer" select="text()"/>
           <xsl:if test="$optposition=$correctanswer">
