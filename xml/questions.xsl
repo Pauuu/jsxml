@@ -16,13 +16,13 @@ span{color:green;padding-left:5px}
   <h2>Corrección</h2>
   <table>
     <tr>
-      <th>Title</th>
-      <th>Option</th>
-      <th>User answer</th>
+      <th>Pregunta</th>
+      <th>Opción</th>
+      <th>Respuesta</th>
     </tr>
     <xsl:for-each select="questions/question">      
     <tr>
-      <td>Q<xsl:value-of select="position"/>: <xsl:value-of select="title"/></td>
+      <td>P<xsl:value-of select="position()"/>: <xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()-1"/>
