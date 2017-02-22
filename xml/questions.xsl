@@ -49,7 +49,9 @@ span{color:green;padding-left:5px}
         <xsl:for-each select="../answer">
           <xsl:choose>
            <xsl:when test="../type = 'text'">
-            <span><xsl:value-of select="$useranswers+1"/></span>
+            <xsl:if test="$useranswers=$correctanswer-1">
+              <span>&#x2713;</span>
+            </xsl:if>
            </xsl:when>
            <xsl:otherwise>
             <xsl:variable name="correctanswer" select="text()"/>
