@@ -1,6 +1,8 @@
 # jsxml
 
-v.12 lee dos ficheros, preguntas.xml y transform.xsl, que se usará para presentar la corrección mediante una transformación xslt en la función presentarNota() (xslt en el cliente, con javascript)
+v.13 js lee dos ficheros, preguntas.xml y t.xsl, que se usará para presentar la corrección mediante una transformación xslt en la función presentarNota() (ejemplo de xslt en el cliente, con javascript)
+
+v.12 modificado preguntas.xml que enlaza a transform.xsl, al visualizar preguntas.xml se hace una xslt y se muestra con formato (a modo de ejemplo de xslt simple)
 
 v.11 modificada la lectura de los datos de tipo select y checkbox para realizarla con XPath. Modificadas las funciones ponerDatosSelectHtml y ponerDatosCheckboxHtml para leer los nodos pasados y poner los datos en el html.
 
