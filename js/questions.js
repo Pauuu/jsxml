@@ -22,24 +22,24 @@ window.onload = function(){
    }
    return false;
  }
- //LEER XML de xml/preguntas.xml
+ //LEER XML de xml/questions.xml
  var xhttp = new XMLHttpRequest();
  xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
    gestionarXml(this);
   }
  };
- xhttp.open("GET", "xml/preguntas.xml", true);
+ xhttp.open("GET", "xml/questions.xml", true);
  xhttp.send();
  
-  //LEER XSL de xml/transform.xml
+  //LEER XSL de xml/questions.xml
  var xhttp2 = new XMLHttpRequest();
  xhttp2.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
    xslDoc=this.responseXML;
   }
  };
- xhttp2.open("GET", "xml/t.xsl", true);
+ xhttp2.open("GET", "xml/questions.xsl", true);
  xhttp2.send();
  
 }
