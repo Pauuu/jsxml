@@ -24,6 +24,13 @@ span{color:green;padding-left:5px}
     <tr>
       <td><xsl:value-of select="title"/></td>
       <td>
+       <xsl:for-each select="answer">
+          <xsl:variable name="questiontype" select="../type"/>
+          <xsl:variable name="texttype" select="text"/>
+          <xsl:if test="$questiontype=$texttype">
+            <span><xsl:value-of select="text()"/></span>
+          </xsl:if>
+       </xsl:for-each>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()-1"/>
         O<xsl:value-of select="$optposition+1"/>:<br/><xsl:value-of select="text()"/>
