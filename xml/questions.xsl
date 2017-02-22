@@ -20,11 +20,12 @@ td,tr,th{border:0px;padding:2px}
       <th>Answer</th>
     </tr>
     <xsl:for-each select="questions/question">
+      <xsl:variable name="qposition" select="position()"/>
     <tr>
-      <td><xsl:value-of select="title"/></td>
+      <td>Q<xsl:value-of select="$qposition"/>: <xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="option">
-        <xsl:value-of select="position()"/>: <xsl:value-of select="text()"/><br/>
+        O<xsl:value-of select="position()"/>: <xsl:value-of select="text()"/><br/>
        </xsl:for-each>
       </td>
       <td>
