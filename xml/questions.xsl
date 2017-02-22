@@ -49,7 +49,7 @@ span{color:green;padding-left:5px}
         <xsl:for-each select="../answer">
           <xsl:choose>
            <xsl:when test="../type = 'text'">
-            <xsl:if test="$useranswers=$correctanswer-1">
+            <xsl:if test="$useranswers=$correctanswer">
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:when>
