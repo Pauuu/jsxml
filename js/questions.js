@@ -193,7 +193,7 @@ function presentarNota(){
    var f=formElement;
    var e = f.elements;
    for (var i = 0, len = e.length; i < len; ++i) {
-    e[i].readOnly = true;
+    e[i].disabled = true;
    }
 }
 
