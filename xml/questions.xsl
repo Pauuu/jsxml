@@ -19,16 +19,18 @@ td,tr,th{border:1px solid;padding:2px}
       <th>Option</th>
       <th>Answer</th>
     </tr>
-    <xsl:for-each select="questions/question">
-      <xsl:variable name="qposition" select="position()"/>
+    <xsl:for-each select="questions/question">      
     <tr>
-      <td>Q<xsl:value-of select="$qposition"/>: <xsl:value-of select="title"/></td>
+      <td>Q<xsl:value-of select="position"/>: <xsl:value-of select="title"/></td>
       <td>
        <xsl:for-each select="option">
-        O<xsl:value-of select="position()"/>: <xsl:value-of select="text()"/><br/>
+         <xsl:variable name="optposition" select="position()"/>
+        O<xsl:value-of select="position()"/>: <xsl:value-of select="text()"/>
          <xsl:for-each select="../answer">
-          A:<xsl:value-of select="text()"/><br/>
-         </xsl:for-each>
+          <xsl:if test="$optposition-1=text()">
+            This option is correct.
+          </xsl:if>
+         </xsl:for-each><br/>
        </xsl:for-each>
       </td>
       <td>
