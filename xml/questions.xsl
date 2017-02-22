@@ -33,7 +33,7 @@ span{color:green;padding-left:5px}
        </xsl:for-each>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()-1"/>
-        O<xsl:value-of select="$optposition+1"/>:<xsl:value-of select="text()"/>
+        O<xsl:value-of select="$optposition+1"/>: <xsl:value-of select="text()"/>
          <xsl:for-each select="../answer">
           <xsl:variable name="correctanswer" select="text()"/>
           <xsl:if test="$optposition=$correctanswer">
@@ -44,9 +44,16 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
-        <xsl:value-of select="text()"/><br/>
+        <xsl:variable name="useranswers" select="text()"/>
+        <xsl:value-of select="text()"/>
+        <xsl:for-each select="../answer">
+          <xsl:variable name="correctanswer" select="text()"/>
+          <xsl:if test="$useranswers=$correctanswer">
+            <span>&#x2713;</span>
+          </xsl:if>
+         </xsl:for-each><br/><br/>
        </xsl:for-each>       
-      </td>
+     </td>
     </tr>
     </xsl:for-each>
   </table>
