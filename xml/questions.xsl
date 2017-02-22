@@ -44,7 +44,7 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
-        <xsl:variable name="useranswers" select="text()"/>
+        <xsl:variable name="useranswers" select="text()-1"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
           <xsl:variable name="correctanswer" select="text()"/>
