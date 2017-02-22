@@ -18,7 +18,7 @@ span{color:green;padding-left:5px}
     <tr>
       <th>Title</th>
       <th>Option</th>
-      <th>Answer</th>
+      <th>User answer</th>
     </tr>
     <xsl:for-each select="questions/question">      
     <tr>
