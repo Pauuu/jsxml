@@ -44,20 +44,21 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
-        <xsl:variable name="useranswers" select="text()-1"/>
+        <xsl:variable name="useranswers" select="text()"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
           <xsl:choose>
            <xsl:when test="../type = 'text'">
-            <xsl:if test="$useranswers=$correctanswer">
+            <xsl:variable name="correctanswertext" select="text()"/>
+            <xsl:if test="$useranswers=$correctanswertext">
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:when>
            <xsl:otherwise>
-            <xsl:variable name="correctanswer" select="text()"/>
-             <xsl:if test="$useranswers=$correctanswer">
+            <xsl:variable name="correctanswer" select="text()+1"/>
+            <xsl:if test="$useranswers=$correctanswer">
               <span>&#x2713;</span>
-             </xsl:if>
+            </xsl:if>
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each><br/><br/>
