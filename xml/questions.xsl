@@ -3,6 +3,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="/">
+<html>
+<body>
 <style rel="stylesheet" type="text/css">
 table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
@@ -36,6 +38,8 @@ td,tr,th{border:0px;padding:2px}
     </tr>
     </xsl:for-each>
   </table>
+ </body>
+ </html>
 </xsl:template>
 
 </xsl:stylesheet>
