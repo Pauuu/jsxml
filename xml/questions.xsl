@@ -47,7 +47,7 @@ span{color:green;padding-left:5px}
         <xsl:variable name="useranswers" select="text()"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
-          <xsl:variable name="correctanswer" select="text()-1"/>
+          <xsl:variable name="correctanswer" select="text()"/>
           <xsl:if test="$useranswers=$correctanswer">
             <span>&#x2713;</span>
           </xsl:if>
