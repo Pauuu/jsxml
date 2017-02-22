@@ -115,7 +115,7 @@ function corregirCheckbox(){
   for (i = 0; i < f.color.length; i++) {  //"color" es el nombre asignado a todos los checkbox
    if (f.color[i].checked) {
     var useranswer = xmlDoc.createElement("useranswer");   
-    useranswer.innerHTML = i;
+    useranswer.innerHTML = i+1;
     xmlDoc.getElementById("profe_003").appendChild(useranswer);
     escorrecta[i]=false;     
     for (j = 0; j < respuestasCheckbox.length; j++) {
