@@ -25,9 +25,9 @@ td,tr,th{border:1px solid;padding:2px}
       <td>
        <xsl:for-each select="option">
          <xsl:variable name="optposition" select="position()"/>
-        O<xsl:value-of select="position()"/>: <xsl:value-of select="text()"/>
+        O<xsl:value-of select="$optposition"/>: <xsl:value-of select="text()"/>
          <xsl:for-each select="../answer">
-          <xsl:if test="$optposition-1=text()">
+          <xsl:if test="$optposition=1">
             This option is correct.
           </xsl:if>
          </xsl:for-each><br/>
