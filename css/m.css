@@ -1,7 +1,8 @@
 body,html{margin:0px}
 body{width:96%;padding-left:2%;padding-right:2%}
-body,input,select,label{font-size:5vw}
-h3{font-size:7vw}
+body,input,select,label{font-size:4vw}
+h3{font-size:6vw}
 input,select{width:80%}
 input[type=checkbox]{width:5%;zoom:1.5}
 form{background-color:aliceblue;padding:1%}
+#resultadosDiv{position:absolute;top:0px;background-color:white;width:inherit;display:none}
