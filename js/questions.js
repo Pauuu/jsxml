@@ -2,7 +2,7 @@ var formElement=null;
 var numeroSecreto=null;
 var respuestaSelect=null;
 var respuestasCheckbox = [];
-var nota = 0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
+var nota = 0.0;  //nota de la prueba sobre 3 puntos (hay 3 preguntas)
 var xmlDoc = null; //global, para modificarlo y serializarlo (y sacarlo por pantalla)
 var xslDoc = null;
 
@@ -13,7 +13,6 @@ window.onload = function(){
  //CORREGIR al apretar el botón
  formElement=document.getElementById('myform');
  formElement.onsubmit=function(){
-   inicializar();
    if (comprobar()){
     corregirNumber();
     corregirSelect();
@@ -181,6 +180,7 @@ function darRespuestaHtml(r){
 }
 
 function presentarNota(){   
+   document.getElementById('resultadosDiv').style.display = "";
    //Código transformación xslt con xmlDoc y xslDoc
    if (document.implementation && document.implementation.createDocument) {
         xsltProcessor = new XSLTProcessor();
@@ -195,11 +195,6 @@ function presentarNota(){
    for (var i = 0, len = e.length; i < len; ++i) {
     e[i].disabled = true;
    }
-}
-
-function inicializar(){
-   document.getElementById('resultadosDiv').innerHTML = "";
-   nota=0.0;  
 }
 
 //Comprobar que se han introducido datos en el formulario
