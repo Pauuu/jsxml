@@ -5,4 +5,4 @@ h3{font-size:2vw}
 input,select{width:50%}
 input[type=checkbox]{width:5%;zoom:1.5}
 form{background-color:aliceblue;padding:3%}
-#resultadosDiv{position:absolute;top:0px;background-color:white;width:inherit}
+#resultadosDiv{position:absolute;top:0px;background-color:white;width:inherit;display:none}
