@@ -180,7 +180,7 @@ function darRespuestaHtml(r){
 }
 
 function presentarNota(){   
-   document.getElementById('resultadosDiv').style.display = "";
+   document.getElementById('resultadosDiv').style.display = "block";
    //Código transformación xslt con xmlDoc y xslDoc
    if (document.implementation && document.implementation.createDocument) {
         xsltProcessor = new XSLTProcessor();
