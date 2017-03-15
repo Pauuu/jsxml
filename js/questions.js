@@ -68,7 +68,6 @@ function gestionarXml(dadesXml){
  //CHECKBOX
  //Recuperamos el título y las opciones (que están dentro de los nodos seleccionados con Xpath: nodesSelect)
  var tituloCheckbox = xmlDoc.getElementsByTagName("title")[2].innerHTML;
- var opcionesCheckbox = [];
  var xpath="/questions/question[@id='profe_003']/option";
  var nodesCheckbox = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.ANY_TYPE, null); 
  ponerDatosCheckboxHtml(tituloCheckbox,nodesCheckbox);
