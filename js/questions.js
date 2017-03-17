@@ -204,11 +204,12 @@ function comprobar(){
       if (f.color[i].checked) checked=true;
    }
    if (f.elements[0].value=="") {
-    f.elements[0].scrollIntoView(); //scrollIntoView() funciona con todos los elementos, mejor que focus()
+    //recomendamos focus para input y select "normal", scrollIntoView para el título de select múltiple, radio y checkbox
+    f.elements[0].focus(); 
     alert("Escribe un número");
     return false;
    } else if (f.elements[1].selectedIndex==0) {
-    f.elements[1].scrollIntoView();
+    f.elements[1].focus();
     alert("Selecciona una opción");
     return false;
    } if (!checked) {    
