@@ -1,5 +1,7 @@
 # jsxml
 
+v.15 cambiado focus por scrollIntoView en las preguntas de radio, checkbox y select múltiple.
+
 v.14 modificadas las funciones de corregir, para, en lugar de sacar texto, añadir un elmento (etiqueta useranswer) a xmlDoc que luego presentaremos con una xslt en javascript. Se ha añadido código para que después de presentar la nota se bloqueen las preguntas, por tanto ya no es necesario la función inicializar y se ha eliminado.
 
 v.13 js lee dos ficheros, questions.xml y questions.xsl, que se usan para presentar la corrección mediante una transformación xslt en la función presentarNota() (ejemplo de xslt en el cliente, con javascript)
