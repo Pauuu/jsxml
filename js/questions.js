@@ -204,15 +204,15 @@ function comprobar(){
       if (f.color[i].checked) checked=true;
    }
    if (f.elements[0].value=="") {
-    f.elements[0].focus();
+    f.elements[0].scrollIntoView(); //scrollIntoView() funciona con todos los elementos, mejor que focus()
     alert("Escribe un número");
     return false;
    } else if (f.elements[1].selectedIndex==0) {
-    f.elements[1].focus();
+    f.elements[1].scrollIntoView();
     alert("Selecciona una opción");
     return false;
    } if (!checked) {    
-    document.getElementsByTagName("h3")[2].focus();
+    document.getElementsByTagName("h3")[2].scrollIntoView();
     alert("Selecciona una opción del checkbox");
     return false;
    } else  return true;
