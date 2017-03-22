@@ -65,7 +65,7 @@ span{color:green;padding-left:5px}
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each>
-         <xsl:if test="$isOk=no">
+         <xsl:if test="$isOk='no'">
               <span id='x'>&#x2715;</span>
          </xsl:if>
          <br/><br/>
