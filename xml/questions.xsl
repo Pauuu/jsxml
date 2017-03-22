@@ -10,6 +10,7 @@ table{width:100%;border:1px solid}
 th{background-color:#cdd8f6}
 td,tr,th{border:1px solid;padding:2px;vertical-align:top}
 span{color:green;padding-left:5px}
+#x{color:red}
 </style>
 </head>
 <body>
@@ -44,6 +45,7 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
+        <xsl:variable name="isOk" select="no"/>
         <xsl:variable name="useranswers" select="text()"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
@@ -51,6 +53,7 @@ span{color:green;padding-left:5px}
            <xsl:when test="../type = 'text'">
             <xsl:variable name="correctanswertext" select="text()"/>
             <xsl:if test="$useranswers=$correctanswertext">
+              <xsl:variable name="isOk" select="yes"/>
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:when>
@@ -61,7 +64,11 @@ span{color:green;padding-left:5px}
             </xsl:if>
            </xsl:otherwise>
           </xsl:choose>
-         </xsl:for-each><br/><br/>
+         </xsl:for-each>
+         <xsl:if test="$isOk=no">
+              <span id='x'>&#x2715;</span>
+         </xsl:if>
+         <br/><br/>
        </xsl:for-each>       
      </td>
     </tr>
