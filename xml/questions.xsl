@@ -52,19 +52,19 @@ span{color:green;padding-left:5px}
            <xsl:when test="../type = 'text'">
             <xsl:variable name="correctanswertext" select="text()"/>
             <xsl:if test="$useranswers=$correctanswertext">
-              <xsl:variable name="isok">yes</xsl:variable>
+              <!--<xsl:variable name="isok">yes</xsl:variable>-->
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:when>
            <xsl:otherwise>
             <xsl:variable name="correctanswer" select="text()+1"/>
-            <xsl:if test="$useranswers=$correctanswer">
+           <!-- <xsl:if test="$useranswers=$correctanswer">
               <span>&#x2713;</span>
-            </xsl:if>
+            </xsl:if> -->
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each>
-         <xsl:if test="$isok!='yes'">
+         <!--<xsl:if test="$isok!='yes'">
               <span>&#x2715;</span>
          </xsl:if>
          <br/><br/>
