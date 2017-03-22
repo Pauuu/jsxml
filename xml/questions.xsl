@@ -45,7 +45,6 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
-        <xsl:variable name="isok">no</xsl:variable>
         <xsl:variable name="useranswers" select="text()"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
@@ -65,9 +64,9 @@ span{color:green;padding-left:5px}
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each>
-         <!--<xsl:if test="$isok='no'">
+         <xsl:if test="$isok!='yes'">
               <span>&#x2715;</span>
-         </xsl:if>-->
+         </xsl:if>
          <br/><br/>
        </xsl:for-each>       
      </td>
