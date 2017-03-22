@@ -45,7 +45,7 @@ span{color:green;padding-left:5px}
       </td>
       <td>
        <xsl:for-each select="useranswer">
-        <dp:set-local-variable name="'isok'" value="'no'"/> 
+        <dp:set-local-variable name="'isok'" value="1"/> 
         <xsl:variable name="useranswers" select="text()"/>
         <xsl:value-of select="text()"/>
         <xsl:for-each select="../answer">
@@ -59,13 +59,13 @@ span{color:green;padding-left:5px}
            <xsl:otherwise>
             <xsl:variable name="correctanswer" select="text()+1"/>
            <xsl:if test="$useranswers=$correctanswer">
-              <dp:set-local-variable name="'isok'" value="'yes'"/>
+              <dp:set-local-variable name="'isok'" value="2'"/>
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each>
-         <xsl:if test="dp:local-variable('isok')='no'">
+         <xsl:if test="dp:local-variable('isok')=1">
            <span id='x'>&#x2715;</span>
          </xsl:if>
          <br/><br/>
