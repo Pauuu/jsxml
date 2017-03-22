@@ -52,7 +52,6 @@ span{color:green;padding-left:5px}
            <xsl:when test="../type = 'text'">
             <xsl:variable name="correctanswertext" select="text()"/>
             <xsl:if test="$useranswers=$correctanswertext">
-              <!--<xsl:variable name="isok">yes</xsl:variable>-->
               <span>&#x2713;</span>
             </xsl:if>
            </xsl:when>
@@ -64,9 +63,6 @@ span{color:green;padding-left:5px}
            </xsl:otherwise>
           </xsl:choose>
          </xsl:for-each>
-         <!--<xsl:if test="$isok!='yes'">
-              <span>&#x2715;</span>
-         </xsl:if>-->
          <br/><br/>
        </xsl:for-each>       
      </td>
