@@ -14,6 +14,17 @@
          "Aquesta si"
        ],
        "resposta": "2"
+     },
+     {
+      "tipus": "radio",
+      "titol": "Escoje las que quieras",
+      "opcio":[
+         "Si",
+         "no",
+         "si",
+         "si"
+      ],
+      "resposta": "2"
      }
    ]
 }
